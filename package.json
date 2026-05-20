@@ -1,0 +1,25 @@
+{
+  "name": "ts-project-creator",
+  "private": true,
+  "version": "1.0.0",
+  "packageManager": "pnpm@10.10.0",
+  "scripts": {
+    "lint": "run-s lint:*",
+    "lint:oxlint": "oxlint . --fix",
+    "lint:eslint": "eslint . --fix --cache",
+    "format": "oxfmt src/",
+    "install:all": "pnpm install -r"
+  },
+  "devDependencies": {
+    "npm-run-all2": "catalog:",
+    "@vitest/eslint-plugin": "catalog:",
+    "@vue/eslint-config-typescript": "catalog:",
+    "eslint": "catalog:",
+    "eslint-config-prettier": "catalog:",
+    "eslint-plugin-oxlint": "catalog:",
+    "eslint-plugin-playwright": "catalog:",
+    "eslint-plugin-vue": "catalog:",
+    "oxfmt": "catalog:",
+    "oxlint": "catalog:"
+  }
+}

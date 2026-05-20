@@ -1,0 +1,15 @@
+{
+  "name": "@ye-yu/backend",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsgo -p ./tsconfig.build.json"
+  },
+  "dependencies": {
+    "@typescript/native-preview": "catalog:"
+  }
+}
