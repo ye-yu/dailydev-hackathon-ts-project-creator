@@ -10,6 +10,7 @@
     "build": "tsgo -p ./tsconfig.build.json"
   },
   "dependencies": {
+    "@types/node": "catalog:",
     "@typescript/native-preview": "catalog:"
   }
 }

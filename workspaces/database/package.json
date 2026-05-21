@@ -2,14 +2,29 @@
   "name": "@ye-yu/database",
   "version": "1.0.0",
   "private": true,
-  "type": "module",
   "files": [
-    "dist"
+    "build"
   ],
-  "scripts": {
-    "build": "tsgo -p ./tsconfig.build.json"
+  "type": "commonjs",
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/node": "catalog:",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
   },
   "dependencies": {
-    "@typescript/native-preview": "catalog:"
+    "@typescript/native-preview": "catalog:",
+    "better-sqlite3": "^12.10.0",
+    "reflect-metadata": "catalog:",
+    "typeorm": "catalog:"
+  },
+  "scripts": {
+    "build": "tsgo -p ./tsconfig.build.json",
+    "start": "ts-node src/index.ts",
+    "typeorm": "typeorm-ts-node-commonjs",
+    "migration:generate": "pnpm build && node ./bin/create-migration.cts && pnpm migration:clean",
+    "migration:up": "pnpm build && node ./bin/migration-up.cts",
+    "migration:down": "pnpm build && node ./bin/migration-down.cts",
+    "migration:clean": "node ./bin/clean-migration.cts"
   }
 }

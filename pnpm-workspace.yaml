@@ -1,15 +1,19 @@
 packages:
   - workspaces/*
-
 catalog:
-  '@vitest/eslint-plugin': '^1.6.16'
-  '@vue/eslint-config-typescript': '^14.7.0'
-  eslint: '^10.2.1'
-  eslint-config-prettier: '^10.1.8'
-  eslint-plugin-oxlint: '~1.60.0'
-  eslint-plugin-playwright: '^2.10.1'
-  eslint-plugin-vue: '~10.8.0'
-  npm-run-all2: '^9.0.0'
-  oxfmt: '^0.45.0'
-  oxlint: '~1.60.0'
-  '@typescript/native-preview': '7.0.0-dev.20260519.1'
+  '@vitest/eslint-plugin': ^1.6.16
+  '@vue/eslint-config-typescript': ^14.7.0
+  eslint: ^10.2.1
+  eslint-config-prettier: ^10.1.8
+  eslint-plugin-oxlint: ~1.60.0
+  eslint-plugin-playwright: ^2.10.1
+  eslint-plugin-vue: ~10.8.0
+  npm-run-all2: ^9.0.0
+  oxfmt: ^0.45.0
+  oxlint: ~1.60.0
+  '@typescript/native-preview': 7.0.0-dev.20260519.1
+  '@types/node': ^22.19.19
+  reflect-metadata: ^0.2.2
+  typeorm: ^1.0.0
+onlyBuiltDependencies:
+  - better-sqlite3
