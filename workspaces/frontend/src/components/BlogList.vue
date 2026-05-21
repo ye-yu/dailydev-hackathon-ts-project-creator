@@ -26,7 +26,7 @@ const blog = useBlogStore()
 .list-panel {
   display: flex;
   flex-direction: column;
-  width: 40%;
+  width: 30%;
   min-width: 320px;
   border-right: 1px solid var(--border);
   background: var(--background);
@@ -35,6 +35,8 @@ const blog = useBlogStore()
   padding: 1rem;
   border-bottom: 1px solid var(--border);
   background: var(--card);
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 .search-bar input {
   width: 100%;
@@ -50,7 +52,7 @@ const blog = useBlogStore()
 .cards {
   flex: 1;
   overflow-y: auto;
-  padding: 1rem;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;

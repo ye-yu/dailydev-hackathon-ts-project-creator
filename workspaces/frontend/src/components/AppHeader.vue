@@ -25,7 +25,7 @@ const blog = useBlogStore()
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.75rem 1.5rem;
+  padding: 0.75rem 2.8rem;
   border-bottom: 1px solid var(--border);
   background: var(--card);
 }

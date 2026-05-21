@@ -107,6 +107,9 @@ function download() {
 .tab-panel {
   flex: 1;
   overflow-y: auto;
+  padding-top: 1.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 .post h2 {
   margin: 0 0 0.5rem;
@@ -136,6 +139,7 @@ function download() {
 .content {
   white-space: pre-wrap;
   line-height: 1.6;
+  padding-top: 1rem;
 }
 .git-row {
   display: flex;
