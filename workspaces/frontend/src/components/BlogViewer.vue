@@ -66,6 +66,9 @@ function download() {
         </div>
       </div>
     </template>
+    <div class="back-bar">
+      <button class="back-btn" type="button" @click="blog.backToList()">← Back</button>
+    </div>
   </section>
 </template>
 
@@ -77,6 +80,31 @@ function download() {
   background: var(--card);
   padding: 1rem;
   overflow: hidden;
+}
+.back-bar {
+  display: none;
+}
+.back-btn {
+  width: 100%;
+  padding: 0.625rem 0.75rem;
+  border-radius: 0.375rem;
+  border: 1px solid var(--border);
+  background: var(--secondary);
+  color: var(--secondary-foreground);
+  cursor: pointer;
+  font-size: 0.875rem;
+}
+.back-btn:hover {
+  background: var(--accent);
+}
+@media (max-width: 768px) {
+  .back-bar {
+    display: block;
+    padding: 0.75rem 1rem calc(0.75rem + env(safe-area-inset-bottom, 0px));
+    margin: 0.75rem -1rem -1rem;
+    border-top: 1px solid var(--border);
+    background: var(--card);
+  }
 }
 .empty {
   flex: 1;

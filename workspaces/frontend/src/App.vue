@@ -12,7 +12,7 @@ const themeClass = computed(() => `theme-${blog.theme}`)
 <template>
   <div class="app" :class="themeClass">
     <AppHeader />
-    <main class="layout">
+    <main class="layout" :class="`mobile-${blog.mobileView}`">
       <BlogList />
       <BlogViewer />
     </main>
@@ -74,5 +74,19 @@ body {
   flex: 1;
   display: flex;
   overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .layout.mobile-list > :deep(.viewer) {
+    display: none;
+  }
+  .layout.mobile-viewer > :deep(.list-panel) {
+    display: none;
+  }
+  .layout :deep(.list-panel) {
+    width: 100%;
+    min-width: 0;
+    border-right: none;
+  }
 }
 </style>

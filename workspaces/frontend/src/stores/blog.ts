@@ -20,6 +20,7 @@ export interface BlogPost {
 
 export type ViewerTab = "post" | "code";
 export type Theme = "light" | "dark";
+export type MobileView = "list" | "viewer";
 
 const samplePosts: BlogPost[] = [
   {
@@ -130,6 +131,7 @@ export const useBlogStore = defineStore("blog", () => {
   const activePostId = ref<string | null>(null);
   const activeTab = ref<ViewerTab>("post");
   const theme = ref<Theme>("light");
+  const mobileView = ref<MobileView>("list");
 
   const filteredPosts = computed(() => {
     const q = search.value.trim().toLowerCase();
@@ -148,6 +150,7 @@ export const useBlogStore = defineStore("blog", () => {
   function selectPost(id: string, tab: ViewerTab) {
     activePostId.value = id;
     activeTab.value = tab;
+    mobileView.value = "viewer";
   }
 
   function setTab(tab: ViewerTab) {
@@ -158,16 +161,22 @@ export const useBlogStore = defineStore("blog", () => {
     theme.value = theme.value === "light" ? "dark" : "light";
   }
 
+  function backToList() {
+    mobileView.value = "list";
+  }
+
   return {
     posts,
     search,
     activePostId,
     activeTab,
     theme,
+    mobileView,
     filteredPosts,
     activePost,
     selectPost,
     setTab,
     toggleTheme,
+    backToList,
   };
 });
