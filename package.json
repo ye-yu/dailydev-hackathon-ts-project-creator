@@ -8,7 +8,8 @@
     "lint:oxlint": "oxlint . --fix",
     "lint:eslint": "eslint . --fix --cache",
     "format": "oxfmt src/",
-    "install:all": "pnpm install -r"
+    "install:all": "pnpm install -r",
+    "frontend:dev": "pnpm --filter @ye-yu/frontend dev"
   },
   "devDependencies": {
     "npm-run-all2": "catalog:",

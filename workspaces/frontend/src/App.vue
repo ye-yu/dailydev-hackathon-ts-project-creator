@@ -1,11 +1,78 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { computed } from 'vue'
+import { useBlogStore } from '@/stores/blog'
+import AppHeader from '@/components/AppHeader.vue'
+import BlogList from '@/components/BlogList.vue'
+import BlogViewer from '@/components/BlogViewer.vue'
+
+const blog = useBlogStore()
+const themeClass = computed(() => `theme-${blog.theme}`)
+</script>
 
 <template>
-  <h1>You did it!</h1>
-  <p>
-    Visit <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to read the
-    documentation
-  </p>
+  <div class="app" :class="themeClass">
+    <AppHeader />
+    <main class="layout">
+      <BlogList />
+      <BlogViewer />
+    </main>
+  </div>
 </template>
 
-<style scoped></style>
+<style>
+:root {
+  --background: #ffffff;
+  --foreground: #0f172a;
+  --card: #ffffff;
+  --border: #e2e8f0;
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+  --accent: #f1f5f9;
+  --accent-foreground: #0f172a;
+  --primary: #2563eb;
+  --primary-foreground: #ffffff;
+  --secondary: #f1f5f9;
+  --secondary-foreground: #0f172a;
+  --input: #ffffff;
+}
+.theme-dark {
+  --background: #0f172a;
+  --foreground: #f8fafc;
+  --card: #1e293b;
+  --border: #334155;
+  --muted: #1e293b;
+  --muted-foreground: #94a3b8;
+  --accent: #334155;
+  --accent-foreground: #f8fafc;
+  --primary: #3b82f6;
+  --primary-foreground: #ffffff;
+  --secondary: #334155;
+  --secondary-foreground: #f8fafc;
+  --input: #1e293b;
+}
+html,
+body,
+#app {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+</style>
+
+<style scoped>
+.app {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--background);
+  color: var(--foreground);
+}
+.layout {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+</style>

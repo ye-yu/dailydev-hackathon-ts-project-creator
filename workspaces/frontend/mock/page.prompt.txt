@@ -1,0 +1,20 @@
+I need two panels on the screen, the left panel contains cards of blog posts summary:
+- Title
+- Timestamp
+- By author
+- Tags
+- Description with ellipsis
+- action buttons: view blog, setup code
+At the top of the left panel, there should be a search input. When clicking either of the action button, the card should be highlighted
+
+on the right panel, there should be a smaller tabbed window of two tabs:
+- Blog Post: contains all the blog contents: title, timestamp, author, description, etc
+- Code Setup: contains collapsible accordions of files, and when the accordion is expanded, the file content is displayed 
+
+Finally, the page header should have login button, light mode/dark mode toggle
+
+view blog and setup code action buttons should both be secondary color, highlighting appears when the card is active with the respective tab open on the right panel
+
+on the right panel, the tab should also be interactable to switch between tabs
+
+at the Code Setup panel, above the accordion, create an expanding div of git http url, and at the right of the input, show two buttons: clone, download

@@ -1,0 +1,1018 @@
+<html class="light" style="color-scheme: light">
+  <body>
+    <div id="container">
+      <div class="tailwind">
+        <div id="fig-code-root" style="height: 100%">
+          <script nonce="">
+            ((e, i, s, u, m, a, l, h) => {
+              let d = document.documentElement,
+                w = ["light", "dark"];
+              function p(n) {
+                ((Array.isArray(e) ? e : [e]).forEach((y) => {
+                  let k = y === "class",
+                    S = k && a ? m.map((f) => a[f] || f) : m;
+                  k
+                    ? (d.classList.remove(...S),
+                      d.classList.add(a && a[n] ? a[n] : n))
+                    : d.setAttribute(y, n);
+                }),
+                  R(n));
+              }
+              function R(n) {
+                h && w.includes(n) && (d.style.colorScheme = n);
+              }
+              function c() {
+                return window.matchMedia("(prefers-color-scheme: dark)").matches
+                  ? "dark"
+                  : "light";
+              }
+              if (u) p(u);
+              else
+                try {
+                  let n = localStorage.getItem(i) || s,
+                    y = l && n === "system" ? c() : n;
+                  p(y);
+                } catch (n) {}
+            })(
+              "class",
+              "theme",
+              "light",
+              null,
+              ["light", "dark"],
+              null,
+              true,
+              true,
+            );
+          </script>
+          <div
+            class="h-screen flex flex-col bg-background"
+            data-fg-d3bl1="0.8:1.3130:/src/app/App.tsx:43:7:1369:1726:e:div:ete"
+            data-fgid-d3bl1=":r2:"
+          >
+            <header
+              class="border-b bg-card px-6 py-4"
+              data-fg-d5jy9="1.26:1.1558:/src/app/components/Header.tsx:34:5:853:697:e:header:e:1"
+              data-fgid-d5jy9=":r4:"
+              data-fg-callsite-d3bl2=""
+            >
+              <div
+                class="flex items-center justify-between"
+                data-fg-d5jy10="1.26:1.1558:/src/app/components/Header.tsx:35:7:907:629:e:div:ete"
+                data-fgid-d5jy10=":r5:"
+              >
+                <h1
+                  class="text-xl"
+                  data-fg-d5jy11="1.26:1.1558:/src/app/components/Header.tsx:36:9:967:43:e:h1:t"
+                  data-fgid-d5jy11=":r6:"
+                >
+                  Developer Blog
+                </h1>
+                <div
+                  class="flex items-center gap-3"
+                  data-fg-d5jy13="1.26:1.1558:/src/app/components/Header.tsx:37:9:1019:504:e:div:ete"
+                  data-fgid-d5jy13=":r7:"
+                >
+                  <button
+                    data-slot="button"
+                    class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive border bg-background text-foreground hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50 size-9 rounded-md"
+                    data-fg-d5jy14="1.26:1.1558:/src/app/components/Header.tsx:38:11:1071:317:e:Button:x::::s:BNeg:1"
+                    data-fgid-d5jy14=":r8:"
+                    data-fg-csem0="0.17:0.2106:/src/app/components/ui/button.tsx:50:5:1941:121:e:Comp::1"
+                    data-fgid-csem0=":r4u:"
+                    data-fg-callsite-d5jy14=""
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="lucide lucide-moon size-4"
+                      data-fg-d5jy17="1.26:1.1558:/src/app/components/Header.tsx:46:15:1326:27:e:Moon::::::D73T"
+                      data-fgid-d5jy17=":r4v:"
+                    >
+                      <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+                    </svg></button
+                  ><button
+                    data-slot="button"
+                    class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-primary text-primary-foreground hover:bg-primary/90 h-9 px-4 py-2 has-[&gt;svg]:px-3"
+                    data-fg-csem0="0.17:0.2106:/src/app/components/ui/button.tsx:50:5:1941:121:e:Comp::1"
+                    data-fgid-csem0=":ra:"
+                    data-fg-d5jy18="1.26:1.1558:/src/app/components/Header.tsx:49:11:1399:109:e:Button:et::::s:BNeg:1"
+                    data-fgid-d5jy18=":r9:"
+                    data-fg-callsite-d5jy18=""
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="lucide lucide-user size-4 mr-2"
+                      data-fg-d5jy19="1.26:1.1558:/src/app/components/Header.tsx:50:13:1438:32:e:User::::::wpV"
+                      data-fgid-d5jy19=":rb:"
+                    >
+                      <path
+                        d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"
+                      ></path>
+                      <circle cx="12" cy="7" r="4"></circle></svg
+                    >Login
+                  </button>
+                </div>
+              </div>
+            </header>
+            <div
+              class="flex-1 flex overflow-hidden"
+              data-fg-d3bl3="0.8:1.3130:/src/app/App.tsx:46:9:1460:1622:e:div:xtetxte"
+              data-fgid-d3bl3=":rc:"
+            >
+              <div
+                class="w-2/5 border-r flex flex-col"
+                data-fg-d3bl5="0.8:1.3130:/src/app/App.tsx:48:11:1557:1289:e:div:ete"
+                data-fgid-d3bl5=":rd:"
+              >
+                <div
+                  class="p-4 border-b bg-card"
+                  data-fg-d3bl6="0.8:1.3130:/src/app/App.tsx:49:13:1616:493:e:div:e"
+                  data-fgid-d3bl6=":re:"
+                >
+                  <div
+                    class="relative"
+                    data-fg-d3bl7="0.8:1.3130:/src/app/App.tsx:50:15:1669:421:e:div:ete"
+                    data-fgid-d3bl7=":rf:"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="lucide lucide-search absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground"
+                      data-fg-d3bl8="0.8:1.3130:/src/app/App.tsx:51:17:1712:92:e:Search::::::B9rK"
+                      data-fgid-d3bl8=":rg:"
+                    >
+                      <circle cx="11" cy="11" r="8"></circle>
+                      <path d="m21 21-4.3-4.3"></path></svg
+                    ><input
+                      type="text"
+                      data-slot="input"
+                      class="file:text-foreground placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input flex h-9 w-full min-w-0 rounded-md border px-3 py-1 text-base bg-input-background transition-[color,box-shadow] outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive pl-9"
+                      placeholder="Search blog posts..."
+                      data-fg-d3bl9="0.8:1.3130:/src/app/App.tsx:52:17:1821:248:e:Input:::::s:19W:1"
+                      data-fgid-d3bl9=":rh:"
+                      data-fg-djqs0="0.32:0.963:/src/app/components/ui/input.tsx:7:5:158:778:e:input::1"
+                      data-fgid-djqs0=":ri:"
+                      data-fg-callsite-d3bl9=""
+                      value=""
+                    />
+                  </div>
+                </div>
+                <div
+                  class="flex-1 overflow-y-auto p-4 space-y-4"
+                  data-fg-d3bl10="0.8:1.3130:/src/app/App.tsx:62:13:2135:694:e:div:x"
+                  data-fgid-d3bl10=":rj:"
+                >
+                  <div
+                    data-slot="card"
+                    class="bg-card text-card-foreground flex flex-col gap-6 rounded-xl border transition-all duration-200"
+                    data-fg-q5t0="1.29:1.1745:/src/app/components/BlogCard.tsx:24:5:672:1037:e:Card:etete:1:::s:CuJ6:1"
+                    data-fgid-q5t0=":rl:"
+                    data-fg-callsite-d3bl14=""
+                    data-fg-elfm0="0.19:0.1988:/src/app/components/ui/card.tsx:7:5:149:178:e:div::1"
+                    data-fgid-elfm0=":rm:"
+                    data-fg-callsite-q5t0=""
+                  >
+                    <div
+                      data-slot="card-header"
+                      class="@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-1.5 px-6 pt-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6"
+                      data-fg-q5t1="1.29:1.1745:/src/app/components/BlogCard.tsx:28:7:799:175:e:CardHeader:ete::::s:BNql:1"
+                      data-fgid-q5t1=":rn:"
+                      data-fg-elfm1="0.19:0.1988:/src/app/components/ui/card.tsx:20:5:427:278:e:div::1"
+                      data-fgid-elfm1=":ro:"
+                      data-fg-callsite-q5t1=""
+                    >
+                      <h4
+                        data-slot="card-title"
+                        class="leading-none"
+                        data-fg-q5t2="1.29:1.1745:/src/app/components/BlogCard.tsx:29:9:820:35:e:CardTitle:x::::s:EEpK:1"
+                        data-fgid-q5t2=":rp:"
+                        data-fg-elfm2="0.19:0.1988:/src/app/components/ui/card.tsx:33:5:804:104:e:h4::1"
+                        data-fgid-elfm2=":rq:"
+                        data-fg-callsite-q5t2=""
+                      >
+                        Getting Started with React Server Components
+                      </h4>
+                      <p
+                        data-slot="card-description"
+                        class="text-muted-foreground"
+                        data-fg-q5t4="1.29:1.1745:/src/app/components/BlogCard.tsx:30:9:864:90:e:CardDescription:xtx::::s:Df6c:1"
+                        data-fgid-q5t4=":rr:"
+                        data-fg-elfm3="0.19:0.1988:/src/app/components/ui/card.tsx:43:5:1013:118:e:p::1"
+                        data-fgid-elfm3=":rs:"
+                        data-fg-callsite-q5t4=""
+                      >
+                        May 18, 2026 • By Sarah Johnson
+                      </p>
+                    </div>
+                    <div
+                      data-slot="card-content"
+                      class="px-6 [&amp;:last-child]:pb-6 space-y-3"
+                      data-fg-q5t8="1.29:1.1745:/src/app/components/BlogCard.tsx:34:7:981:360:e:CardContent:ete::::s:BJcl:1"
+                      data-fgid-q5t8=":rt:"
+                      data-fg-elfm5="0.19:0.1988:/src/app/components/ui/card.tsx:66:5:1513:119:e:div::1"
+                      data-fgid-elfm5=":ru:"
+                      data-fg-callsite-q5t8=""
+                    >
+                      <div
+                        class="flex flex-wrap gap-2"
+                        data-fg-q5t9="1.29:1.1745:/src/app/components/BlogCard.tsx:35:9:1025:194:e:div:x"
+                        data-fgid-q5t9=":rv:"
+                      >
+                        <span
+                          data-slot="badge"
+                          class="inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&amp;&gt;svg]:size-3 gap-1 [&amp;&gt;svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden border-transparent bg-secondary text-secondary-foreground [a&amp;]:hover:bg-secondary/90"
+                          data-fg-q5t11="1.29:1.1745:/src/app/components/BlogCard.tsx:37:13:1112:78:e:Badge:x::::s:DSxU:1"
+                          data-fgid-q5t11=":r10:"
+                          data-fg-eipr0="0.15:0.1636:/src/app/components/ui/badge.tsx:38:5:1481:113:e:Comp::1"
+                          data-fgid-eipr0=":r11:"
+                          data-fg-callsite-q5t11=""
+                          >React</span
+                        ><span
+                          data-slot="badge"
+                          class="inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&amp;&gt;svg]:size-3 gap-1 [&amp;&gt;svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden border-transparent bg-secondary text-secondary-foreground [a&amp;]:hover:bg-secondary/90"
+                          data-fg-q5t11="1.29:1.1745:/src/app/components/BlogCard.tsx:37:13:1112:78:e:Badge:x::::s:DSxU:1"
+                          data-fgid-q5t11=":r12:"
+                          data-fg-eipr0="0.15:0.1636:/src/app/components/ui/badge.tsx:38:5:1481:113:e:Comp::1"
+                          data-fgid-eipr0=":r13:"
+                          data-fg-callsite-q5t11=""
+                          >Server Components</span
+                        ><span
+                          data-slot="badge"
+                          class="inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&amp;&gt;svg]:size-3 gap-1 [&amp;&gt;svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden border-transparent bg-secondary text-secondary-foreground [a&amp;]:hover:bg-secondary/90"
+                          data-fg-q5t11="1.29:1.1745:/src/app/components/BlogCard.tsx:37:13:1112:78:e:Badge:x::::s:DSxU:1"
+                          data-fgid-q5t11=":r14:"
+                          data-fg-eipr0="0.15:0.1636:/src/app/components/ui/badge.tsx:38:5:1481:113:e:Comp::1"
+                          data-fgid-eipr0=":r15:"
+                          data-fg-callsite-q5t11=""
+                          >Next.js</span
+                        >
+                      </div>
+                      <p
+                        class="text-muted-foreground line-clamp-2"
+                        data-fg-q5t13="1.29:1.1745:/src/app/components/BlogCard.tsx:42:9:1228:92:e:p:x"
+                        data-fgid-q5t13=":r16:"
+                      >
+                        Learn how to leverage React Server Components to build
+                        faster, more efficient web applications with improved
+                        performance and user experience.
+                      </p>
+                    </div>
+                    <div
+                      data-slot="card-footer"
+                      class="flex items-center px-6 pb-6 [.border-t]:pt-6 gap-2"
+                      data-fg-q5t15="1.29:1.1745:/src/app/components/BlogCard.tsx:46:7:1348:349:e:CardFooter:ete::::s:C6LJ:1"
+                      data-fgid-q5t15=":r17:"
+                      data-fg-elfm6="0.19:0.1988:/src/app/components/ui/card.tsx:76:5:1732:138:e:div::1"
+                      data-fgid-elfm6=":r18:"
+                      data-fg-callsite-q5t15=""
+                    >
+                      <button
+                        data-slot="button"
+                        class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-secondary text-secondary-foreground hover:bg-secondary/80 h-8 rounded-md gap-1.5 px-3 has-[&gt;svg]:px-2.5"
+                        data-fg-q5t16="1.29:1.1745:/src/app/components/BlogCard.tsx:47:9:1387:139:e:Button:et::::s:BNeg:1"
+                        data-fgid-q5t16=":r19:"
+                        data-fg-csem0="0.17:0.2106:/src/app/components/ui/button.tsx:50:5:1941:121:e:Comp::1"
+                        data-fgid-csem0=":r1a:"
+                        data-fg-callsite-q5t16=""
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="lucide lucide-eye size-4 mr-2"
+                          data-fg-q5t17="1.29:1.1745:/src/app/components/BlogCard.tsx:48:11:1457:31:e:Eye::::::EJvT"
+                          data-fgid-q5t17=":r1b:"
+                        >
+                          <path
+                            d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"
+                          ></path>
+                          <circle cx="12" cy="12" r="3"></circle></svg
+                        >View Blog</button
+                      ><button
+                        data-slot="button"
+                        class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-secondary text-secondary-foreground hover:bg-secondary/80 h-8 rounded-md gap-1.5 px-3 has-[&gt;svg]:px-2.5"
+                        data-fg-q5t19="1.29:1.1745:/src/app/components/BlogCard.tsx:51:9:1535:142:e:Button:et::::s:BNeg:1"
+                        data-fgid-q5t19=":r1c:"
+                        data-fg-csem0="0.17:0.2106:/src/app/components/ui/button.tsx:50:5:1941:121:e:Comp::1"
+                        data-fgid-csem0=":r1d:"
+                        data-fg-callsite-q5t19=""
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="lucide lucide-code-xml size-4 mr-2"
+                          data-fg-q5t20="1.29:1.1745:/src/app/components/BlogCard.tsx:52:11:1605:33:e:Code2::::::Oap"
+                          data-fgid-q5t20=":r1e:"
+                        >
+                          <path d="m18 16 4-4-4-4"></path>
+                          <path d="m6 8-4 4 4 4"></path>
+                          <path d="m14.5 4-5 16"></path></svg
+                        >Setup Code
+                      </button>
+                    </div>
+                  </div>
+                  <div
+                    data-slot="card"
+                    class="bg-card text-card-foreground flex flex-col gap-6 rounded-xl border transition-all duration-200"
+                    data-fg-q5t0="1.29:1.1745:/src/app/components/BlogCard.tsx:24:5:672:1037:e:Card:etete:1:::s:CuJ6:1"
+                    data-fgid-q5t0=":r1g:"
+                    data-fg-callsite-d3bl14=""
+                    data-fg-elfm0="0.19:0.1988:/src/app/components/ui/card.tsx:7:5:149:178:e:div::1"
+                    data-fgid-elfm0=":r1h:"
+                    data-fg-callsite-q5t0=""
+                  >
+                    <div
+                      data-slot="card-header"
+                      class="@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-1.5 px-6 pt-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6"
+                      data-fg-q5t1="1.29:1.1745:/src/app/components/BlogCard.tsx:28:7:799:175:e:CardHeader:ete::::s:BNql:1"
+                      data-fgid-q5t1=":r1i:"
+                      data-fg-elfm1="0.19:0.1988:/src/app/components/ui/card.tsx:20:5:427:278:e:div::1"
+                      data-fgid-elfm1=":r1j:"
+                      data-fg-callsite-q5t1=""
+                    >
+                      <h4
+                        data-slot="card-title"
+                        class="leading-none"
+                        data-fg-q5t2="1.29:1.1745:/src/app/components/BlogCard.tsx:29:9:820:35:e:CardTitle:x::::s:EEpK:1"
+                        data-fgid-q5t2=":r1k:"
+                        data-fg-elfm2="0.19:0.1988:/src/app/components/ui/card.tsx:33:5:804:104:e:h4::1"
+                        data-fgid-elfm2=":r1l:"
+                        data-fg-callsite-q5t2=""
+                      >
+                        Building Responsive Layouts with CSS Grid
+                      </h4>
+                      <p
+                        data-slot="card-description"
+                        class="text-muted-foreground"
+                        data-fg-q5t4="1.29:1.1745:/src/app/components/BlogCard.tsx:30:9:864:90:e:CardDescription:xtx::::s:Df6c:1"
+                        data-fgid-q5t4=":r1m:"
+                        data-fg-elfm3="0.19:0.1988:/src/app/components/ui/card.tsx:43:5:1013:118:e:p::1"
+                        data-fgid-elfm3=":r1n:"
+                        data-fg-callsite-q5t4=""
+                      >
+                        May 15, 2026 • By Michael Chen
+                      </p>
+                    </div>
+                    <div
+                      data-slot="card-content"
+                      class="px-6 [&amp;:last-child]:pb-6 space-y-3"
+                      data-fg-q5t8="1.29:1.1745:/src/app/components/BlogCard.tsx:34:7:981:360:e:CardContent:ete::::s:BJcl:1"
+                      data-fgid-q5t8=":r1o:"
+                      data-fg-elfm5="0.19:0.1988:/src/app/components/ui/card.tsx:66:5:1513:119:e:div::1"
+                      data-fgid-elfm5=":r1p:"
+                      data-fg-callsite-q5t8=""
+                    >
+                      <div
+                        class="flex flex-wrap gap-2"
+                        data-fg-q5t9="1.29:1.1745:/src/app/components/BlogCard.tsx:35:9:1025:194:e:div:x"
+                        data-fgid-q5t9=":r1q:"
+                      >
+                        <span
+                          data-slot="badge"
+                          class="inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&amp;&gt;svg]:size-3 gap-1 [&amp;&gt;svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden border-transparent bg-secondary text-secondary-foreground [a&amp;]:hover:bg-secondary/90"
+                          data-fg-q5t11="1.29:1.1745:/src/app/components/BlogCard.tsx:37:13:1112:78:e:Badge:x::::s:DSxU:1"
+                          data-fgid-q5t11=":r1r:"
+                          data-fg-eipr0="0.15:0.1636:/src/app/components/ui/badge.tsx:38:5:1481:113:e:Comp::1"
+                          data-fgid-eipr0=":r1s:"
+                          data-fg-callsite-q5t11=""
+                          >CSS</span
+                        ><span
+                          data-slot="badge"
+                          class="inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&amp;&gt;svg]:size-3 gap-1 [&amp;&gt;svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden border-transparent bg-secondary text-secondary-foreground [a&amp;]:hover:bg-secondary/90"
+                          data-fg-q5t11="1.29:1.1745:/src/app/components/BlogCard.tsx:37:13:1112:78:e:Badge:x::::s:DSxU:1"
+                          data-fgid-q5t11=":r1t:"
+                          data-fg-eipr0="0.15:0.1636:/src/app/components/ui/badge.tsx:38:5:1481:113:e:Comp::1"
+                          data-fgid-eipr0=":r1u:"
+                          data-fg-callsite-q5t11=""
+                          >Grid</span
+                        ><span
+                          data-slot="badge"
+                          class="inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&amp;&gt;svg]:size-3 gap-1 [&amp;&gt;svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden border-transparent bg-secondary text-secondary-foreground [a&amp;]:hover:bg-secondary/90"
+                          data-fg-q5t11="1.29:1.1745:/src/app/components/BlogCard.tsx:37:13:1112:78:e:Badge:x::::s:DSxU:1"
+                          data-fgid-q5t11=":r1v:"
+                          data-fg-eipr0="0.15:0.1636:/src/app/components/ui/badge.tsx:38:5:1481:113:e:Comp::1"
+                          data-fgid-eipr0=":r20:"
+                          data-fg-callsite-q5t11=""
+                          >Responsive Design</span
+                        >
+                      </div>
+                      <p
+                        class="text-muted-foreground line-clamp-2"
+                        data-fg-q5t13="1.29:1.1745:/src/app/components/BlogCard.tsx:42:9:1228:92:e:p:x"
+                        data-fgid-q5t13=":r21:"
+                      >
+                        Master CSS Grid to create flexible, responsive layouts
+                        that adapt beautifully to any screen size without media
+                        queries overload.
+                      </p>
+                    </div>
+                    <div
+                      data-slot="card-footer"
+                      class="flex items-center px-6 pb-6 [.border-t]:pt-6 gap-2"
+                      data-fg-q5t15="1.29:1.1745:/src/app/components/BlogCard.tsx:46:7:1348:349:e:CardFooter:ete::::s:C6LJ:1"
+                      data-fgid-q5t15=":r22:"
+                      data-fg-elfm6="0.19:0.1988:/src/app/components/ui/card.tsx:76:5:1732:138:e:div::1"
+                      data-fgid-elfm6=":r23:"
+                      data-fg-callsite-q5t15=""
+                    >
+                      <button
+                        data-slot="button"
+                        class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-secondary text-secondary-foreground hover:bg-secondary/80 h-8 rounded-md gap-1.5 px-3 has-[&gt;svg]:px-2.5"
+                        data-fg-q5t16="1.29:1.1745:/src/app/components/BlogCard.tsx:47:9:1387:139:e:Button:et::::s:BNeg:1"
+                        data-fgid-q5t16=":r24:"
+                        data-fg-csem0="0.17:0.2106:/src/app/components/ui/button.tsx:50:5:1941:121:e:Comp::1"
+                        data-fgid-csem0=":r25:"
+                        data-fg-callsite-q5t16=""
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="lucide lucide-eye size-4 mr-2"
+                          data-fg-q5t17="1.29:1.1745:/src/app/components/BlogCard.tsx:48:11:1457:31:e:Eye::::::EJvT"
+                          data-fgid-q5t17=":r26:"
+                        >
+                          <path
+                            d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"
+                          ></path>
+                          <circle cx="12" cy="12" r="3"></circle></svg
+                        >View Blog</button
+                      ><button
+                        data-slot="button"
+                        class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-secondary text-secondary-foreground hover:bg-secondary/80 h-8 rounded-md gap-1.5 px-3 has-[&gt;svg]:px-2.5"
+                        data-fg-q5t19="1.29:1.1745:/src/app/components/BlogCard.tsx:51:9:1535:142:e:Button:et::::s:BNeg:1"
+                        data-fgid-q5t19=":r27:"
+                        data-fg-csem0="0.17:0.2106:/src/app/components/ui/button.tsx:50:5:1941:121:e:Comp::1"
+                        data-fgid-csem0=":r28:"
+                        data-fg-callsite-q5t19=""
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="lucide lucide-code-xml size-4 mr-2"
+                          data-fg-q5t20="1.29:1.1745:/src/app/components/BlogCard.tsx:52:11:1605:33:e:Code2::::::Oap"
+                          data-fgid-q5t20=":r29:"
+                        >
+                          <path d="m18 16 4-4-4-4"></path>
+                          <path d="m6 8-4 4 4 4"></path>
+                          <path d="m14.5 4-5 16"></path></svg
+                        >Setup Code
+                      </button>
+                    </div>
+                  </div>
+                  <div
+                    data-slot="card"
+                    class="bg-card text-card-foreground flex flex-col gap-6 rounded-xl border transition-all duration-200"
+                    data-fg-q5t0="1.29:1.1745:/src/app/components/BlogCard.tsx:24:5:672:1037:e:Card:etete:1:::s:CuJ6:1"
+                    data-fgid-q5t0=":r2b:"
+                    data-fg-callsite-d3bl14=""
+                    data-fg-elfm0="0.19:0.1988:/src/app/components/ui/card.tsx:7:5:149:178:e:div::1"
+                    data-fgid-elfm0=":r2c:"
+                    data-fg-callsite-q5t0=""
+                  >
+                    <div
+                      data-slot="card-header"
+                      class="@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-1.5 px-6 pt-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6"
+                      data-fg-q5t1="1.29:1.1745:/src/app/components/BlogCard.tsx:28:7:799:175:e:CardHeader:ete::::s:BNql:1"
+                      data-fgid-q5t1=":r2d:"
+                      data-fg-elfm1="0.19:0.1988:/src/app/components/ui/card.tsx:20:5:427:278:e:div::1"
+                      data-fgid-elfm1=":r2e:"
+                      data-fg-callsite-q5t1=""
+                    >
+                      <h4
+                        data-slot="card-title"
+                        class="leading-none"
+                        data-fg-q5t2="1.29:1.1745:/src/app/components/BlogCard.tsx:29:9:820:35:e:CardTitle:x::::s:EEpK:1"
+                        data-fgid-q5t2=":r2f:"
+                        data-fg-elfm2="0.19:0.1988:/src/app/components/ui/card.tsx:33:5:804:104:e:h4::1"
+                        data-fgid-elfm2=":r2g:"
+                        data-fg-callsite-q5t2=""
+                      >
+                        TypeScript Best Practices for Large Applications
+                      </h4>
+                      <p
+                        data-slot="card-description"
+                        class="text-muted-foreground"
+                        data-fg-q5t4="1.29:1.1745:/src/app/components/BlogCard.tsx:30:9:864:90:e:CardDescription:xtx::::s:Df6c:1"
+                        data-fgid-q5t4=":r2h:"
+                        data-fg-elfm3="0.19:0.1988:/src/app/components/ui/card.tsx:43:5:1013:118:e:p::1"
+                        data-fgid-elfm3=":r2i:"
+                        data-fg-callsite-q5t4=""
+                      >
+                        May 12, 2026 • By Emily Rodriguez
+                      </p>
+                    </div>
+                    <div
+                      data-slot="card-content"
+                      class="px-6 [&amp;:last-child]:pb-6 space-y-3"
+                      data-fg-q5t8="1.29:1.1745:/src/app/components/BlogCard.tsx:34:7:981:360:e:CardContent:ete::::s:BJcl:1"
+                      data-fgid-q5t8=":r2j:"
+                      data-fg-elfm5="0.19:0.1988:/src/app/components/ui/card.tsx:66:5:1513:119:e:div::1"
+                      data-fgid-elfm5=":r2k:"
+                      data-fg-callsite-q5t8=""
+                    >
+                      <div
+                        class="flex flex-wrap gap-2"
+                        data-fg-q5t9="1.29:1.1745:/src/app/components/BlogCard.tsx:35:9:1025:194:e:div:x"
+                        data-fgid-q5t9=":r2l:"
+                      >
+                        <span
+                          data-slot="badge"
+                          class="inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&amp;&gt;svg]:size-3 gap-1 [&amp;&gt;svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden border-transparent bg-secondary text-secondary-foreground [a&amp;]:hover:bg-secondary/90"
+                          data-fg-q5t11="1.29:1.1745:/src/app/components/BlogCard.tsx:37:13:1112:78:e:Badge:x::::s:DSxU:1"
+                          data-fgid-q5t11=":r2m:"
+                          data-fg-eipr0="0.15:0.1636:/src/app/components/ui/badge.tsx:38:5:1481:113:e:Comp::1"
+                          data-fgid-eipr0=":r2n:"
+                          data-fg-callsite-q5t11=""
+                          >TypeScript</span
+                        ><span
+                          data-slot="badge"
+                          class="inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&amp;&gt;svg]:size-3 gap-1 [&amp;&gt;svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden border-transparent bg-secondary text-secondary-foreground [a&amp;]:hover:bg-secondary/90"
+                          data-fg-q5t11="1.29:1.1745:/src/app/components/BlogCard.tsx:37:13:1112:78:e:Badge:x::::s:DSxU:1"
+                          data-fgid-q5t11=":r2o:"
+                          data-fg-eipr0="0.15:0.1636:/src/app/components/ui/badge.tsx:38:5:1481:113:e:Comp::1"
+                          data-fgid-eipr0=":r2p:"
+                          data-fg-callsite-q5t11=""
+                          >Best Practices</span
+                        ><span
+                          data-slot="badge"
+                          class="inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&amp;&gt;svg]:size-3 gap-1 [&amp;&gt;svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden border-transparent bg-secondary text-secondary-foreground [a&amp;]:hover:bg-secondary/90"
+                          data-fg-q5t11="1.29:1.1745:/src/app/components/BlogCard.tsx:37:13:1112:78:e:Badge:x::::s:DSxU:1"
+                          data-fgid-q5t11=":r2q:"
+                          data-fg-eipr0="0.15:0.1636:/src/app/components/ui/badge.tsx:38:5:1481:113:e:Comp::1"
+                          data-fgid-eipr0=":r2r:"
+                          data-fg-callsite-q5t11=""
+                          >Architecture</span
+                        >
+                      </div>
+                      <p
+                        class="text-muted-foreground line-clamp-2"
+                        data-fg-q5t13="1.29:1.1745:/src/app/components/BlogCard.tsx:42:9:1228:92:e:p:x"
+                        data-fgid-q5t13=":r2s:"
+                      >
+                        Discover essential TypeScript patterns and practices
+                        that will help you maintain type safety and code quality
+                        in enterprise-level applications.
+                      </p>
+                    </div>
+                    <div
+                      data-slot="card-footer"
+                      class="flex items-center px-6 pb-6 [.border-t]:pt-6 gap-2"
+                      data-fg-q5t15="1.29:1.1745:/src/app/components/BlogCard.tsx:46:7:1348:349:e:CardFooter:ete::::s:C6LJ:1"
+                      data-fgid-q5t15=":r2t:"
+                      data-fg-elfm6="0.19:0.1988:/src/app/components/ui/card.tsx:76:5:1732:138:e:div::1"
+                      data-fgid-elfm6=":r2u:"
+                      data-fg-callsite-q5t15=""
+                    >
+                      <button
+                        data-slot="button"
+                        class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-secondary text-secondary-foreground hover:bg-secondary/80 h-8 rounded-md gap-1.5 px-3 has-[&gt;svg]:px-2.5"
+                        data-fg-q5t16="1.29:1.1745:/src/app/components/BlogCard.tsx:47:9:1387:139:e:Button:et::::s:BNeg:1"
+                        data-fgid-q5t16=":r2v:"
+                        data-fg-csem0="0.17:0.2106:/src/app/components/ui/button.tsx:50:5:1941:121:e:Comp::1"
+                        data-fgid-csem0=":r30:"
+                        data-fg-callsite-q5t16=""
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="lucide lucide-eye size-4 mr-2"
+                          data-fg-q5t17="1.29:1.1745:/src/app/components/BlogCard.tsx:48:11:1457:31:e:Eye::::::EJvT"
+                          data-fgid-q5t17=":r31:"
+                        >
+                          <path
+                            d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"
+                          ></path>
+                          <circle cx="12" cy="12" r="3"></circle></svg
+                        >View Blog</button
+                      ><button
+                        data-slot="button"
+                        class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-secondary text-secondary-foreground hover:bg-secondary/80 h-8 rounded-md gap-1.5 px-3 has-[&gt;svg]:px-2.5"
+                        data-fg-q5t19="1.29:1.1745:/src/app/components/BlogCard.tsx:51:9:1535:142:e:Button:et::::s:BNeg:1"
+                        data-fgid-q5t19=":r32:"
+                        data-fg-csem0="0.17:0.2106:/src/app/components/ui/button.tsx:50:5:1941:121:e:Comp::1"
+                        data-fgid-csem0=":r33:"
+                        data-fg-callsite-q5t19=""
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="lucide lucide-code-xml size-4 mr-2"
+                          data-fg-q5t20="1.29:1.1745:/src/app/components/BlogCard.tsx:52:11:1605:33:e:Code2::::::Oap"
+                          data-fgid-q5t20=":r34:"
+                        >
+                          <path d="m18 16 4-4-4-4"></path>
+                          <path d="m6 8-4 4 4 4"></path>
+                          <path d="m14.5 4-5 16"></path></svg
+                        >Setup Code
+                      </button>
+                    </div>
+                  </div>
+                  <div
+                    data-slot="card"
+                    class="bg-card text-card-foreground flex flex-col gap-6 rounded-xl border transition-all duration-200"
+                    data-fg-q5t0="1.29:1.1745:/src/app/components/BlogCard.tsx:24:5:672:1037:e:Card:etete:1:::s:CuJ6:1"
+                    data-fgid-q5t0=":r36:"
+                    data-fg-callsite-d3bl14=""
+                    data-fg-elfm0="0.19:0.1988:/src/app/components/ui/card.tsx:7:5:149:178:e:div::1"
+                    data-fgid-elfm0=":r37:"
+                    data-fg-callsite-q5t0=""
+                  >
+                    <div
+                      data-slot="card-header"
+                      class="@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-1.5 px-6 pt-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6"
+                      data-fg-q5t1="1.29:1.1745:/src/app/components/BlogCard.tsx:28:7:799:175:e:CardHeader:ete::::s:BNql:1"
+                      data-fgid-q5t1=":r38:"
+                      data-fg-elfm1="0.19:0.1988:/src/app/components/ui/card.tsx:20:5:427:278:e:div::1"
+                      data-fgid-elfm1=":r39:"
+                      data-fg-callsite-q5t1=""
+                    >
+                      <h4
+                        data-slot="card-title"
+                        class="leading-none"
+                        data-fg-q5t2="1.29:1.1745:/src/app/components/BlogCard.tsx:29:9:820:35:e:CardTitle:x::::s:EEpK:1"
+                        data-fgid-q5t2=":r3a:"
+                        data-fg-elfm2="0.19:0.1988:/src/app/components/ui/card.tsx:33:5:804:104:e:h4::1"
+                        data-fgid-elfm2=":r3b:"
+                        data-fg-callsite-q5t2=""
+                      >
+                        Optimizing Web Performance with Core Web Vitals
+                      </h4>
+                      <p
+                        data-slot="card-description"
+                        class="text-muted-foreground"
+                        data-fg-q5t4="1.29:1.1745:/src/app/components/BlogCard.tsx:30:9:864:90:e:CardDescription:xtx::::s:Df6c:1"
+                        data-fgid-q5t4=":r3c:"
+                        data-fg-elfm3="0.19:0.1988:/src/app/components/ui/card.tsx:43:5:1013:118:e:p::1"
+                        data-fgid-elfm3=":r3d:"
+                        data-fg-callsite-q5t4=""
+                      >
+                        May 8, 2026 • By David Kim
+                      </p>
+                    </div>
+                    <div
+                      data-slot="card-content"
+                      class="px-6 [&amp;:last-child]:pb-6 space-y-3"
+                      data-fg-q5t8="1.29:1.1745:/src/app/components/BlogCard.tsx:34:7:981:360:e:CardContent:ete::::s:BJcl:1"
+                      data-fgid-q5t8=":r3e:"
+                      data-fg-elfm5="0.19:0.1988:/src/app/components/ui/card.tsx:66:5:1513:119:e:div::1"
+                      data-fgid-elfm5=":r3f:"
+                      data-fg-callsite-q5t8=""
+                    >
+                      <div
+                        class="flex flex-wrap gap-2"
+                        data-fg-q5t9="1.29:1.1745:/src/app/components/BlogCard.tsx:35:9:1025:194:e:div:x"
+                        data-fgid-q5t9=":r3g:"
+                      >
+                        <span
+                          data-slot="badge"
+                          class="inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&amp;&gt;svg]:size-3 gap-1 [&amp;&gt;svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden border-transparent bg-secondary text-secondary-foreground [a&amp;]:hover:bg-secondary/90"
+                          data-fg-q5t11="1.29:1.1745:/src/app/components/BlogCard.tsx:37:13:1112:78:e:Badge:x::::s:DSxU:1"
+                          data-fgid-q5t11=":r3h:"
+                          data-fg-eipr0="0.15:0.1636:/src/app/components/ui/badge.tsx:38:5:1481:113:e:Comp::1"
+                          data-fgid-eipr0=":r3i:"
+                          data-fg-callsite-q5t11=""
+                          >Performance</span
+                        ><span
+                          data-slot="badge"
+                          class="inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&amp;&gt;svg]:size-3 gap-1 [&amp;&gt;svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden border-transparent bg-secondary text-secondary-foreground [a&amp;]:hover:bg-secondary/90"
+                          data-fg-q5t11="1.29:1.1745:/src/app/components/BlogCard.tsx:37:13:1112:78:e:Badge:x::::s:DSxU:1"
+                          data-fgid-q5t11=":r3j:"
+                          data-fg-eipr0="0.15:0.1636:/src/app/components/ui/badge.tsx:38:5:1481:113:e:Comp::1"
+                          data-fgid-eipr0=":r3k:"
+                          data-fg-callsite-q5t11=""
+                          >Web Vitals</span
+                        ><span
+                          data-slot="badge"
+                          class="inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&amp;&gt;svg]:size-3 gap-1 [&amp;&gt;svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden border-transparent bg-secondary text-secondary-foreground [a&amp;]:hover:bg-secondary/90"
+                          data-fg-q5t11="1.29:1.1745:/src/app/components/BlogCard.tsx:37:13:1112:78:e:Badge:x::::s:DSxU:1"
+                          data-fgid-q5t11=":r3l:"
+                          data-fg-eipr0="0.15:0.1636:/src/app/components/ui/badge.tsx:38:5:1481:113:e:Comp::1"
+                          data-fgid-eipr0=":r3m:"
+                          data-fg-callsite-q5t11=""
+                          >SEO</span
+                        >
+                      </div>
+                      <p
+                        class="text-muted-foreground line-clamp-2"
+                        data-fg-q5t13="1.29:1.1745:/src/app/components/BlogCard.tsx:42:9:1228:92:e:p:x"
+                        data-fgid-q5t13=":r3n:"
+                      >
+                        Learn how to measure and improve your website's Core Web
+                        Vitals to provide better user experience and improve
+                        search rankings.
+                      </p>
+                    </div>
+                    <div
+                      data-slot="card-footer"
+                      class="flex items-center px-6 pb-6 [.border-t]:pt-6 gap-2"
+                      data-fg-q5t15="1.29:1.1745:/src/app/components/BlogCard.tsx:46:7:1348:349:e:CardFooter:ete::::s:C6LJ:1"
+                      data-fgid-q5t15=":r3o:"
+                      data-fg-elfm6="0.19:0.1988:/src/app/components/ui/card.tsx:76:5:1732:138:e:div::1"
+                      data-fgid-elfm6=":r3p:"
+                      data-fg-callsite-q5t15=""
+                    >
+                      <button
+                        data-slot="button"
+                        class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-secondary text-secondary-foreground hover:bg-secondary/80 h-8 rounded-md gap-1.5 px-3 has-[&gt;svg]:px-2.5"
+                        data-fg-q5t16="1.29:1.1745:/src/app/components/BlogCard.tsx:47:9:1387:139:e:Button:et::::s:BNeg:1"
+                        data-fgid-q5t16=":r3q:"
+                        data-fg-csem0="0.17:0.2106:/src/app/components/ui/button.tsx:50:5:1941:121:e:Comp::1"
+                        data-fgid-csem0=":r3r:"
+                        data-fg-callsite-q5t16=""
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="lucide lucide-eye size-4 mr-2"
+                          data-fg-q5t17="1.29:1.1745:/src/app/components/BlogCard.tsx:48:11:1457:31:e:Eye::::::EJvT"
+                          data-fgid-q5t17=":r3s:"
+                        >
+                          <path
+                            d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"
+                          ></path>
+                          <circle cx="12" cy="12" r="3"></circle></svg
+                        >View Blog</button
+                      ><button
+                        data-slot="button"
+                        class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-secondary text-secondary-foreground hover:bg-secondary/80 h-8 rounded-md gap-1.5 px-3 has-[&gt;svg]:px-2.5"
+                        data-fg-q5t19="1.29:1.1745:/src/app/components/BlogCard.tsx:51:9:1535:142:e:Button:et::::s:BNeg:1"
+                        data-fgid-q5t19=":r3t:"
+                        data-fg-csem0="0.17:0.2106:/src/app/components/ui/button.tsx:50:5:1941:121:e:Comp::1"
+                        data-fgid-csem0=":r3u:"
+                        data-fg-callsite-q5t19=""
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="lucide lucide-code-xml size-4 mr-2"
+                          data-fg-q5t20="1.29:1.1745:/src/app/components/BlogCard.tsx:52:11:1605:33:e:Code2::::::Oap"
+                          data-fgid-q5t20=":r3v:"
+                        >
+                          <path d="m18 16 4-4-4-4"></path>
+                          <path d="m6 8-4 4 4 4"></path>
+                          <path d="m14.5 4-5 16"></path></svg
+                        >Setup Code
+                      </button>
+                    </div>
+                  </div>
+                  <div
+                    data-slot="card"
+                    class="bg-card text-card-foreground flex flex-col gap-6 rounded-xl border transition-all duration-200"
+                    data-fg-q5t0="1.29:1.1745:/src/app/components/BlogCard.tsx:24:5:672:1037:e:Card:etete:1:::s:CuJ6:1"
+                    data-fgid-q5t0=":r41:"
+                    data-fg-callsite-d3bl14=""
+                    data-fg-elfm0="0.19:0.1988:/src/app/components/ui/card.tsx:7:5:149:178:e:div::1"
+                    data-fgid-elfm0=":r42:"
+                    data-fg-callsite-q5t0=""
+                  >
+                    <div
+                      data-slot="card-header"
+                      class="@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-1.5 px-6 pt-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6"
+                      data-fg-q5t1="1.29:1.1745:/src/app/components/BlogCard.tsx:28:7:799:175:e:CardHeader:ete::::s:BNql:1"
+                      data-fgid-q5t1=":r43:"
+                      data-fg-elfm1="0.19:0.1988:/src/app/components/ui/card.tsx:20:5:427:278:e:div::1"
+                      data-fgid-elfm1=":r44:"
+                      data-fg-callsite-q5t1=""
+                    >
+                      <h4
+                        data-slot="card-title"
+                        class="leading-none"
+                        data-fg-q5t2="1.29:1.1745:/src/app/components/BlogCard.tsx:29:9:820:35:e:CardTitle:x::::s:EEpK:1"
+                        data-fgid-q5t2=":r45:"
+                        data-fg-elfm2="0.19:0.1988:/src/app/components/ui/card.tsx:33:5:804:104:e:h4::1"
+                        data-fgid-elfm2=":r46:"
+                        data-fg-callsite-q5t2=""
+                      >
+                        State Management in Modern React Applications
+                      </h4>
+                      <p
+                        data-slot="card-description"
+                        class="text-muted-foreground"
+                        data-fg-q5t4="1.29:1.1745:/src/app/components/BlogCard.tsx:30:9:864:90:e:CardDescription:xtx::::s:Df6c:1"
+                        data-fgid-q5t4=":r47:"
+                        data-fg-elfm3="0.19:0.1988:/src/app/components/ui/card.tsx:43:5:1013:118:e:p::1"
+                        data-fgid-elfm3=":r48:"
+                        data-fg-callsite-q5t4=""
+                      >
+                        May 5, 2026 • By Jessica Martinez
+                      </p>
+                    </div>
+                    <div
+                      data-slot="card-content"
+                      class="px-6 [&amp;:last-child]:pb-6 space-y-3"
+                      data-fg-q5t8="1.29:1.1745:/src/app/components/BlogCard.tsx:34:7:981:360:e:CardContent:ete::::s:BJcl:1"
+                      data-fgid-q5t8=":r49:"
+                      data-fg-elfm5="0.19:0.1988:/src/app/components/ui/card.tsx:66:5:1513:119:e:div::1"
+                      data-fgid-elfm5=":r4a:"
+                      data-fg-callsite-q5t8=""
+                    >
+                      <div
+                        class="flex flex-wrap gap-2"
+                        data-fg-q5t9="1.29:1.1745:/src/app/components/BlogCard.tsx:35:9:1025:194:e:div:x"
+                        data-fgid-q5t9=":r4b:"
+                      >
+                        <span
+                          data-slot="badge"
+                          class="inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&amp;&gt;svg]:size-3 gap-1 [&amp;&gt;svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden border-transparent bg-secondary text-secondary-foreground [a&amp;]:hover:bg-secondary/90"
+                          data-fg-q5t11="1.29:1.1745:/src/app/components/BlogCard.tsx:37:13:1112:78:e:Badge:x::::s:DSxU:1"
+                          data-fgid-q5t11=":r4c:"
+                          data-fg-eipr0="0.15:0.1636:/src/app/components/ui/badge.tsx:38:5:1481:113:e:Comp::1"
+                          data-fgid-eipr0=":r4d:"
+                          data-fg-callsite-q5t11=""
+                          >React</span
+                        ><span
+                          data-slot="badge"
+                          class="inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&amp;&gt;svg]:size-3 gap-1 [&amp;&gt;svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden border-transparent bg-secondary text-secondary-foreground [a&amp;]:hover:bg-secondary/90"
+                          data-fg-q5t11="1.29:1.1745:/src/app/components/BlogCard.tsx:37:13:1112:78:e:Badge:x::::s:DSxU:1"
+                          data-fgid-q5t11=":r4e:"
+                          data-fg-eipr0="0.15:0.1636:/src/app/components/ui/badge.tsx:38:5:1481:113:e:Comp::1"
+                          data-fgid-eipr0=":r4f:"
+                          data-fg-callsite-q5t11=""
+                          >State Management</span
+                        ><span
+                          data-slot="badge"
+                          class="inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&amp;&gt;svg]:size-3 gap-1 [&amp;&gt;svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden border-transparent bg-secondary text-secondary-foreground [a&amp;]:hover:bg-secondary/90"
+                          data-fg-q5t11="1.29:1.1745:/src/app/components/BlogCard.tsx:37:13:1112:78:e:Badge:x::::s:DSxU:1"
+                          data-fgid-q5t11=":r4g:"
+                          data-fg-eipr0="0.15:0.1636:/src/app/components/ui/badge.tsx:38:5:1481:113:e:Comp::1"
+                          data-fgid-eipr0=":r4h:"
+                          data-fg-callsite-q5t11=""
+                          >Zustand</span
+                        >
+                      </div>
+                      <p
+                        class="text-muted-foreground line-clamp-2"
+                        data-fg-q5t13="1.29:1.1745:/src/app/components/BlogCard.tsx:42:9:1228:92:e:p:x"
+                        data-fgid-q5t13=":r4i:"
+                      >
+                        Explore different state management solutions and learn
+                        when to use each one for optimal application
+                        architecture and maintainability.
+                      </p>
+                    </div>
+                    <div
+                      data-slot="card-footer"
+                      class="flex items-center px-6 pb-6 [.border-t]:pt-6 gap-2"
+                      data-fg-q5t15="1.29:1.1745:/src/app/components/BlogCard.tsx:46:7:1348:349:e:CardFooter:ete::::s:C6LJ:1"
+                      data-fgid-q5t15=":r4j:"
+                      data-fg-elfm6="0.19:0.1988:/src/app/components/ui/card.tsx:76:5:1732:138:e:div::1"
+                      data-fgid-elfm6=":r4k:"
+                      data-fg-callsite-q5t15=""
+                    >
+                      <button
+                        data-slot="button"
+                        class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-secondary text-secondary-foreground hover:bg-secondary/80 h-8 rounded-md gap-1.5 px-3 has-[&gt;svg]:px-2.5"
+                        data-fg-q5t16="1.29:1.1745:/src/app/components/BlogCard.tsx:47:9:1387:139:e:Button:et::::s:BNeg:1"
+                        data-fgid-q5t16=":r4l:"
+                        data-fg-csem0="0.17:0.2106:/src/app/components/ui/button.tsx:50:5:1941:121:e:Comp::1"
+                        data-fgid-csem0=":r4m:"
+                        data-fg-callsite-q5t16=""
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="lucide lucide-eye size-4 mr-2"
+                          data-fg-q5t17="1.29:1.1745:/src/app/components/BlogCard.tsx:48:11:1457:31:e:Eye::::::EJvT"
+                          data-fgid-q5t17=":r4n:"
+                        >
+                          <path
+                            d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"
+                          ></path>
+                          <circle cx="12" cy="12" r="3"></circle></svg
+                        >View Blog</button
+                      ><button
+                        data-slot="button"
+                        class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-secondary text-secondary-foreground hover:bg-secondary/80 h-8 rounded-md gap-1.5 px-3 has-[&gt;svg]:px-2.5"
+                        data-fg-q5t19="1.29:1.1745:/src/app/components/BlogCard.tsx:51:9:1535:142:e:Button:et::::s:BNeg:1"
+                        data-fgid-q5t19=":r4o:"
+                        data-fg-csem0="0.17:0.2106:/src/app/components/ui/button.tsx:50:5:1941:121:e:Comp::1"
+                        data-fgid-csem0=":r4p:"
+                        data-fg-callsite-q5t19=""
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="lucide lucide-code-xml size-4 mr-2"
+                          data-fg-q5t20="1.29:1.1745:/src/app/components/BlogCard.tsx:52:11:1605:33:e:Code2::::::Oap"
+                          data-fgid-q5t20=":r4q:"
+                        >
+                          <path d="m18 16 4-4-4-4"></path>
+                          <path d="m6 8-4 4 4 4"></path>
+                          <path d="m14.5 4-5 16"></path></svg
+                        >Setup Code
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="flex-1 bg-card p-6 overflow-hidden"
+                data-fg-d3bl16="0.8:1.3130:/src/app/App.tsx:83:11:2902:165:e:div:e"
+                data-fgid-d3bl16=":r4r:"
+              >
+                <div
+                  class="flex items-center justify-center h-full text-muted-foreground"
+                  data-fg-cxid0="1.32:1.4005:/src/app/components/BlogViewer.tsx:23:7:727:135:e:div:t"
+                  data-fgid-cxid0=":r4t:"
+                >
+                  Select a blog post to view details
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

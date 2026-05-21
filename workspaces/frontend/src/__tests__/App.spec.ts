@@ -1,11 +1,20 @@
-import { describe, it, expect } from 'vitest'
+import { describe, it, expect, beforeEach } from "vitest";
+import { createPinia, setActivePinia } from "pinia";
+import { mount } from "@vue/test-utils";
+import App from "../App.vue";
 
-import { mount } from '@vue/test-utils'
-import App from '../App.vue'
+describe("App", () => {
+  beforeEach(() => {
+    setActivePinia(createPinia());
+  });
 
-describe('App', () => {
-  it('mounts renders properly', () => {
-    const wrapper = mount(App)
-    expect(wrapper.text()).toContain('You did it!')
-  })
-})
+  it("renders the developer blog header", () => {
+    const wrapper = mount(App);
+    expect(wrapper.text()).toContain("Developer Blog");
+  });
+
+  it("shows the empty viewer message when no post is selected", () => {
+    const wrapper = mount(App);
+    expect(wrapper.text()).toContain("Select a blog post to view details");
+  });
+});
