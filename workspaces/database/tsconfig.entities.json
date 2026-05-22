@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.src.json",
+  "exclude": ["tests", "build", "bin", "dist", "./src/migrations/**/*.ts"],
+  "compilerOptions": {
+    "incremental": true,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "outDir": "dist"
+  }
+}

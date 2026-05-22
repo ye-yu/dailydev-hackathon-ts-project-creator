@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import type { BlogFile } from '@/stores/blog'
+import type { BlogFileLazy } from '@ye-yu/shared/entities'
 
-defineProps<{ file: BlogFile }>()
+defineProps<{ file: BlogFileLazy }>()
 const open = ref(false)
 </script>
 

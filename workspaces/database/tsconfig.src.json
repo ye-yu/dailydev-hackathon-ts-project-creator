@@ -11,5 +11,5 @@
     "experimentalDecorators": true,
     "sourceMap": true
   },
-  "exclude": ["bin"]
+  "exclude": ["bin", "dist", "build"]
 }

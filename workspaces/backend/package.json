@@ -10,6 +10,8 @@
     "build": "tsgo -p ./tsconfig.build.json"
   },
   "dependencies": {
+    "@ye-yu/shared": "workspace:",
+    "@ye-yu/database": "workspace:",
     "@types/node": "catalog:",
     "@typescript/native-preview": "catalog:"
   }

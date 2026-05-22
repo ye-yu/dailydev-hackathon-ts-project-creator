@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useBlogStore, type BlogPost, type ViewerTab } from '@/stores/blog'
+import { useBlogStore, type ViewerTab } from '@/stores/blog'
+import type { BlogPostLazy } from '@ye-yu/shared/entities'
 
-const props = defineProps<{ post: BlogPost }>()
+const props = defineProps<{ post: BlogPostLazy }>()
 const blog = useBlogStore()
 
 const isActive = computed(() => blog.activePostId === props.post.id)

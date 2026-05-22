@@ -4,6 +4,11 @@
   "version": "1.0.0",
   "packageManager": "pnpm@10.10.0",
   "scripts": {
+    "build:backend": "pnpm --filter @ye-yu/backend build",
+    "build:database": "pnpm --filter @ye-yu/database build",
+    "build:shared": "pnpm --filter @ye-yu/shared build",
+    "build:frontend": "pnpm --filter @ye-yu/frontend build",
+    "build": "run-p build:*",
     "lint": "run-s lint:*",
     "lint:oxlint": "oxlint . --fix",
     "lint:eslint": "eslint . --fix --cache",
