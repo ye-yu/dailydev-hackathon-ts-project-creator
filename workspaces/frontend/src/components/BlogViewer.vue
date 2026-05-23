@@ -2,6 +2,7 @@
 import { computed } from 'vue'
 import { useBlogStore } from '@/stores/blog'
 import { useLoading } from '@/composables/useLoading'
+import { sleep } from '@/utils/delayed'
 import BackBar from './blog-viewer/BackBar.vue'
 import CodePanel from './blog-viewer/CodePanel.vue'
 import EmptyState from './blog-viewer/EmptyState.vue'
@@ -58,8 +59,6 @@ async function loadContentIfNeeded(): Promise<void> {
   } catch (error) {
     console.error('Failed to load blog content:', error)
     throw new Error('Failed to load content')
-  } finally {
-    isLoadingContent.value = false
   }
 }
 

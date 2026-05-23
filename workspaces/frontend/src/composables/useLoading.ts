@@ -1,6 +1,6 @@
 import { computed, effect, ref } from "vue";
 
-export function useLoading<T>(callback: () => PromiseLike<T>, computedValues: () => T) {
+export function useLoading<T>(callback: () => PromiseLike<T>, computedValues: () => unknown) {
   const isLoadingContent = ref(false);
   const result = ref<T | null>(null);
   const error = ref<Error | null>(null);
