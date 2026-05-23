@@ -1,13 +1,14 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, defineAsyncComponent } from 'vue'
 import { useBlogStore } from '@/stores/blog'
 import { useLoading } from '@/composables/useLoading'
 import { sleep } from '@/utils/delayed'
 import BackBar from './blog-viewer/BackBar.vue'
-import CodePanel from './blog-viewer/CodePanel.vue'
 import EmptyState from './blog-viewer/EmptyState.vue'
-import PostPanel from './blog-viewer/PostPanel.vue'
 import ViewerTabs from './blog-viewer/ViewerTabs.vue'
+
+const PostPanel = defineAsyncComponent(() => import('./blog-viewer/PostPanel.vue'))
+const CodePanel = defineAsyncComponent(() => import('./blog-viewer/CodePanel.vue'))
 
 const blog = useBlogStore()
 

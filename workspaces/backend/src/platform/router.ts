@@ -115,6 +115,7 @@ export class Router<TMiddleware = Middleware, EMiddleware = ErrorMiddleware> imp
   use(path: string, ...middlewares: TMiddleware[]): void;
   use(path: string, ...middlewares: EMiddleware[]): void;
   use(path: string, ...middlewares: (TMiddleware | EMiddleware)[]): void {
+    console.once(`Registering route: [use] ${path}`);
     const tmiddlewares = middlewares.filter((middleware) => this.isMiddleware(middleware));
     const emiddlewares = middlewares.filter((middleware) => this.isErrorMiddleware(middleware));
 

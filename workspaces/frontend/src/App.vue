@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, defineAsyncComponent } from 'vue'
 import { useBlogStore } from '@/stores/blog'
 import AppHeader from '@/components/AppHeader.vue'
-import BlogList from '@/components/BlogList.vue'
-import BlogViewer from '@/components/BlogViewer.vue'
+
+const BlogList = defineAsyncComponent(() => import('@/components/BlogList.vue'))
+const BlogViewer = defineAsyncComponent(() => import('@/components/BlogViewer.vue'))
 
 const blog = useBlogStore()
 const themeClass = computed(() => `theme-${blog.theme}`)

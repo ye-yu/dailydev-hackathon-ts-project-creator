@@ -52,8 +52,6 @@ const fgColors: ForegroundColors[] = [
   "magentaBright",
   "red",
   "redBright",
-  "white",
-  "whiteBright",
   "yellow",
   "yellowBright",
 ];
