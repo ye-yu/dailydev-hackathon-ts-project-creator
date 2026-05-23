@@ -107,14 +107,3 @@ function viewCode() {
     />
   </section>
 </template>
-
-<style scoped>
-.viewer {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  background: var(--card);
-  padding: 1rem;
-  overflow: hidden;
-}
-</style>

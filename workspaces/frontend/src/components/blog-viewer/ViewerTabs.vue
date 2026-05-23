@@ -31,25 +31,3 @@ const emit = defineEmits<{
     </button>
   </div>
 </template>
-
-<style scoped>
-.tabs {
-  display: flex;
-  gap: 0.25rem;
-  border-bottom: 1px solid var(--border);
-  margin-bottom: 1rem;
-}
-.tabs button {
-  padding: 0.5rem 1rem;
-  background: transparent;
-  color: var(--muted-foreground);
-  border: none;
-  border-bottom: 2px solid transparent;
-  cursor: pointer;
-  font-size: 0.875rem;
-}
-.tabs button.active {
-  color: var(--foreground);
-  border-bottom-color: var(--primary);
-}
-</style>
