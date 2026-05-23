@@ -13,6 +13,10 @@
     "./entities": {
       "types": "./dist/entities.d.ts",
       "default": "./dist/entities.js"
+    },
+    "./daily-dev": {
+      "types": "./dist/daily-dev-openapi/api.types.d.ts",
+      "default": "./dist/daily-dev-openapi/api.types.js"
     }
   },
   "dependencies": {

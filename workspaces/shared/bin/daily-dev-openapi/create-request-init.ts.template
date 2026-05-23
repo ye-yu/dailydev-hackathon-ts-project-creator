@@ -1,0 +1,50 @@
+const dailyDevConfig = {
+  baseURL: "",
+  authToken: ""
+}
+
+export function setDailyDevConfig(baseURL: string, authToken: string) {
+  dailyDevConfig.baseURL = baseURL
+  dailyDevConfig.authToken = authToken
+}
+
+export function createDailyDevRequestInit(
+  id: string,
+  method: string,
+  data: {
+    body?: object;
+    searchParams?: object;
+    pathParams?: object;
+  },
+): RequestInit {
+  const { baseURL, authToken } = dailyDevConfig;
+  const urlStr = new URL(`${idToUrl[id]}`, baseURL);
+
+  const { body, searchParams, pathParams } = data;
+  if (pathParams) {
+    urlStr.pathname = urlStr.pathname.replace(
+      /%7B(\w+)%7D/g,
+      (_, paramName) => {
+        const paramValue = Reflect.get(pathParams, paramName);
+        if (!paramValue) {
+          throw new Error(`Missing path parameter: ${paramName}`);
+        }
+        return paramValue;
+      },
+    );
+  }
+
+  if (searchParams) {
+    for (const [key, value] of Object.entries(searchParams)) {
+      urlStr.searchParams.set(key, `${value}`);
+    }
+  }
+
+  return {
+    method,
+    headers: {
+      "Content-Type": "application/json",
+    },
+    ...(body ? { body: JSON.stringify(body) } : null),
+  };
+}

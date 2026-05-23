@@ -1,10 +1,14 @@
 {
-    "compilerOptions": {
-        "target": "esnext",
-        "module": "nodenext",
-        "rewriteRelativeImportExtensions": true,
-        "erasableSyntaxOnly": true,
-        "verbatimModuleSyntax": true,
-        "types": ["node"]
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.src.json"
+    },
+    {
+      "path": "./tsconfig.build.json"
+    },
+    {
+      "path": "./tsconfig.bin.json"
     }
+  ]
 }
