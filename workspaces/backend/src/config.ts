@@ -14,7 +14,6 @@ let env: Env = {
   HTTP_ALLOW_ORIGIN: process.env.HTTP_ALLOW_ORIGIN || "",
   NODE_TLS_REJECT_UNAUTHORIZED: process.env.NODE_TLS_REJECT_UNAUTHORIZED || "1",
   API_SERVER_PORT: Number.parseInt(process.env.API_SERVER_PORT ?? "3000", 10) || 3000,
-  GIT_SERVER_PORT: Number.parseInt(process.env.GIT_SERVER_PORT ?? "7005", 10) || 7005,
 };
 
 export async function loadEnv(nodeEnv: "development" | "production" | "test") {
@@ -48,7 +47,6 @@ export async function loadEnv(nodeEnv: "development" | "production" | "test") {
         `  HTTP_ALLOW_ORIGIN: "",`,
         `  NODE_TLS_REJECT_UNAUTHORIZED: "1",`,
         `  API_SERVER_PORT: 3000,`,
-        `  GIT_SERVER_PORT: 7005,`,
         `};`,
         ``,
         `export default env`,

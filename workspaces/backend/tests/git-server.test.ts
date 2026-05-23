@@ -9,17 +9,15 @@ import { BlogPost } from "@ye-yu/database";
 import {
   createRepository,
   setGitServerDataSource,
-  startGitServer,
-  stopGitServer,
-} from "../src/git/git-server.ts";
+  REPO_ROOT,
+  BARE_ROOT,
+} from "../src/git/git.server.ts";
 import { PrefixedLogger } from "../src/logger/logger.ts";
+import { startAPIServer } from "../src/server.ts";
 
 const PORT = 7099;
 const REPO_NAME = `test-repo-${Date.now()}`;
-const GIT_URL = `http://localhost:${PORT}/${REPO_NAME}.git`;
-const REPO_ROOT = path.resolve(import.meta.dirname, "../../database/data/repositories");
-const SOURCE_DIR = path.join(REPO_ROOT, REPO_NAME);
-const BARE_DIR = path.join(REPO_ROOT, ".bare", `${REPO_NAME}.git`);
+const GIT_URL = `http://localhost:${PORT}/git/${REPO_NAME}.git`;
 
 const console = new PrefixedLogger(import.meta.url);
 let cloneRoot: string | undefined;
@@ -46,7 +44,7 @@ if (!TestDataSource.isInitialized) {
 }
 
 setGitServerDataSource(TestDataSource);
-await startGitServer(PORT);
+const server = await startAPIServer(PORT);
 
 describe("Git Server", () => {
   before(async () => {
@@ -72,8 +70,8 @@ describe("Git Server", () => {
       "README.md": "# Hello\n",
       "src/index.ts": "console.log('hi');\n",
     });
-    assert.ok(fs.existsSync(SOURCE_DIR), `Source dir ${SOURCE_DIR} should exist`);
-    assert.ok(fs.existsSync(BARE_DIR), `Bare repo ${BARE_DIR} should exist`);
+    assert.ok(fs.existsSync(REPO_ROOT), `Source dir ${REPO_ROOT} should exist`);
+    assert.ok(fs.existsSync(BARE_ROOT), `Bare repo ${BARE_ROOT} should exist`);
   });
 
   it("clones the repository via the git server", async () => {
@@ -106,13 +104,19 @@ describe("Git Server", () => {
     if (cloneRoot) {
       fs.rmSync(cloneRoot, { recursive: true, force: true });
     }
-    fs.rmSync(SOURCE_DIR, { recursive: true, force: true });
-    fs.rmSync(BARE_DIR, { recursive: true, force: true });
+
+    for (const testRepos of fs
+      .readdirSync(REPO_ROOT, { withFileTypes: true })
+      .filter((d) => d.isDirectory() && d.name.startsWith("test-repo-"))) {
+      fs.rmSync(path.join(REPO_ROOT, testRepos.name), { recursive: true, force: true });
+    }
 
     if (TestDataSource.isInitialized) {
       await TestDataSource.destroy();
     }
 
-    await stopGitServer();
+    await new Promise<void>((resolve, reject) =>
+      server.close((err) => (err ? reject(err) : resolve())),
+    );
   });
 });

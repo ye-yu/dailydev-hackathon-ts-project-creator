@@ -5,5 +5,4 @@ export type Env = {
   HTTP_ALLOW_ORIGIN: string;
   NODE_TLS_REJECT_UNAUTHORIZED: string;
   API_SERVER_PORT: number;
-  GIT_SERVER_PORT: number;
 };

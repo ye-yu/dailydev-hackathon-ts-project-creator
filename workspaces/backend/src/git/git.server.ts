@@ -6,13 +6,14 @@ import { spawn } from "node:child_process";
 import type { AppDataSource } from "@ye-yu/database/data-source";
 import { BlogPost } from "@ye-yu/database";
 import { PrefixedLogger } from "../logger/logger.ts";
+import type { HttpMiddleware } from "../platform/http-router.ts";
 
 const console = new PrefixedLogger(import.meta.url);
 
 // workspaces/backend/src/git -> workspaces/database/data/repositories
-const REPO_ROOT = path.resolve(import.meta.dirname, "../../../database/data/repositories");
-const BARE_ROOT = path.join(REPO_ROOT, ".bare");
-const DEFAULT_BRANCH = "main";
+export const REPO_ROOT = path.resolve(import.meta.dirname, "../../../database/data/repositories");
+export const BARE_ROOT = path.join(REPO_ROOT, ".bare");
+export const DEFAULT_BRANCH = "main";
 
 function repoNameFromUrl(repoOrUrl: string): string {
   const last = repoOrUrl.split(/[\\/]/).pop() ?? repoOrUrl;
@@ -54,7 +55,7 @@ async function materializeRepo(repoName: string): Promise<boolean> {
     const post = await dataSource
       .getRepository(BlogPost)
       .createQueryBuilder("post")
-      .where("post.gitUrl LIKE :pattern", { pattern: `%/${repoName}.git` })
+      .where("post.gitUrl LIKE :pattern", { pattern: `%/git/${repoName}.git` })
       .getOne();
     if (!post) {
       console.warn(`No BlogPost found for git repo '${repoName}'`);
@@ -108,40 +109,31 @@ fs.mkdirSync(BARE_ROOT, { recursive: true });
 const repos = new Git((dir) => path.join(BARE_ROOT, `${repoNameFromUrl(dir ?? "")}.git`), {
   autoCreate: false,
 });
+repos.on("push", (push) => {
+  console.warn(`Rejected push to '${push.repo}' (read-only server)`);
+  push.reject(403, "This is a read-only git server");
+});
 
-export async function startGitServer(port: number): Promise<void> {
-  repos.on("push", (push) => {
-    console.warn(`Rejected push to '${push.repo}' (read-only server)`);
-    push.reject(403, "This is a read-only git server");
-  });
+repos.on("info", (info) => {
+  const repoName = repoNameFromUrl(info.repo);
+  materializeRepo(repoName).then(
+    (ok) => {
+      if (ok) info.accept();
+      else info.reject(404, `Repository '${repoName}' not found`);
+    },
+    (err) => {
+      console.error(`Failed to materialize '${repoName}':`, err);
+      info.reject(500, "Failed to prepare repository");
+    },
+  );
+});
 
-  repos.on("info", (info) => {
-    const repoName = repoNameFromUrl(info.repo);
-    materializeRepo(repoName).then(
-      (ok) => {
-        if (ok) info.accept();
-        else info.reject(404, `Repository '${repoName}' not found`);
-      },
-      (err) => {
-        console.error(`Failed to materialize '${repoName}':`, err);
-        info.reject(500, "Failed to prepare repository");
-      },
-    );
-  });
+repos.on("head", (head) => head.accept());
 
-  repos.on("head", (head) => head.accept());
-
-  repos.on("fetch", (fetch) => {
-    console.info(`Fetch ${fetch.repo} @ ${fetch.commit}`);
-    fetch.accept();
-  });
-
-  const { resolve, reject, promise } = Promise.withResolvers<void>();
-  repos.listen(port, undefined, () => resolve());
-  repos.server?.on("error", reject);
-  await promise;
-  console.once(`Git server is running on port ${port} (root: ${REPO_ROOT})`);
-}
+repos.on("fetch", (fetch) => {
+  console.info(`Fetch ${fetch.repo} @ ${fetch.commit}`);
+  fetch.accept();
+});
 
 /**
  * @param repoName must be a valid directory name. e.g. `my-blog-post`
@@ -182,7 +174,7 @@ export async function createRepository(
   }
 }
 
-export async function stopGitServer(): Promise<void> {
-  const message = await repos.close();
-  console.once("Git server stopped with message", message);
+export function getGitHandler(): HttpMiddleware {
+  const handler = repos.handle.bind(repos);
+  return (req, res, _) => handler(req, res);
 }

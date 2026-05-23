@@ -3,7 +3,7 @@ import { loadEnv, getEnv } from "./config.ts";
 import { parseArgs } from "node:util";
 import { PrefixedLogger } from "./logger/logger.ts";
 import { AppDataSource } from "@ye-yu/database/data-source";
-import { setGitServerDataSource, startGitServer } from "./git/git-server.ts";
+import { setGitServerDataSource } from "./git/git.server.ts";
 import { startAPIServer } from "./server.ts";
 const console = new PrefixedLogger(import.meta.url);
 
@@ -52,6 +52,5 @@ const config = getEnv();
 setDailyDevConfig(config.DAILY_DEV_BASE_URL, config.DAILY_DEV_API_KEY);
 
 await AppDataSource.initialize();
-await startAPIServer(config.API_SERVER_PORT);
 setGitServerDataSource(AppDataSource);
-await startGitServer(config.GIT_SERVER_PORT);
+await startAPIServer(config.API_SERVER_PORT);
