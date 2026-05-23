@@ -36,7 +36,7 @@ export function createDailyDevRequestInit(
     url: urlStr.toString(),
     method,
     headers: {
-      ...(body? { "Content-Type": "application/json" } : null)
+      ...(body? { "Content-Type": "application/json" } : null),
       "Authorization": `Bearer ${authToken}`,
     },
     ...(body ? { body: JSON.stringify(body) } : null),
