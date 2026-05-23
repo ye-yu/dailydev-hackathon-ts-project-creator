@@ -1,19 +1,32 @@
 <script setup lang="ts">
+import { onMounted } from 'vue'
 import { useBlogStore } from '@/stores/blog'
 import BlogCard from './BlogCard.vue'
 
 const blog = useBlogStore()
+
+onMounted(() => {
+  if (import.meta.env.MODE !== 'test') {
+    void blog.loadPosts()
+  }
+})
 </script>
 
 <template>
   <section class="list-panel">
-    <div class="search-bar">
+    <div class="controls">
       <input
         v-model="blog.search"
         type="search"
         placeholder="Search blog posts..."
         aria-label="Search blog posts"
       />
+
+      <button class="primary-btn" :disabled="blog.isFetchingPosts" @click="blog.fetchPosts()">
+        {{ blog.isFetchingPosts ? 'Fetching...' : 'Fetch Posts' }}
+      </button>
+
+      <p v-if="blog.lastFetchWarning" class="warning">{{ blog.lastFetchWarning }}</p>
     </div>
     <div class="cards">
       <BlogCard v-for="post in blog.filteredPosts" :key="post.id" :post="post" />
@@ -31,14 +44,17 @@ const blog = useBlogStore()
   border-right: 1px solid var(--border);
   background: var(--background);
 }
-.search-bar {
+.controls {
   padding: 1rem;
   border-bottom: 1px solid var(--border);
   background: var(--card);
   margin-left: 1rem;
   margin-right: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
 }
-.search-bar input {
+.controls input {
   width: 100%;
   height: 2.25rem;
   padding: 0 0.75rem;
@@ -48,6 +64,25 @@ const blog = useBlogStore()
   color: var(--foreground);
   font-size: 0.875rem;
   box-sizing: border-box;
+}
+.primary-btn {
+  width: 100%;
+  height: 2.25rem;
+  border-radius: 0.375rem;
+  border: none;
+  background: var(--primary);
+  color: var(--primary-foreground);
+  font-weight: 600;
+  cursor: pointer;
+}
+.primary-btn:disabled {
+  opacity: 0.7;
+  cursor: wait;
+}
+.warning {
+  margin: 0;
+  font-size: 0.75rem;
+  color: #b45309;
 }
 .cards {
   flex: 1;

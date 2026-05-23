@@ -5,6 +5,11 @@ import FileAccordion from './FileAccordion.vue'
 
 const blog = useBlogStore()
 
+const hasFiles = computed(() => (blog.activePost?.files?.length ?? 0) > 0)
+const showMobileGenerateButton = computed(
+  () => blog.activeTab === 'code' && Boolean(blog.activePost) && !hasFiles.value,
+)
+
 const formattedDate = computed(() => {
   const p = blog.activePost
   if (!p) return ''
@@ -19,6 +24,10 @@ function clone() {
 function download() {
   const url = blog.activePost?.gitUrl
   if (url) window.open(url.replace(/\.git$/, '/archive/refs/heads/main.zip'), '_blank')
+}
+
+function generateFiles() {
+  void blog.generateFilesForActivePost()
 }
 </script>
 
@@ -56,17 +65,37 @@ function download() {
       </div>
 
       <div v-else class="tab-panel code">
-        <div class="git-row">
+        <div v-if="hasFiles" class="git-row">
           <input class="git-url" readonly :value="blog.activePost.gitUrl" aria-label="Git URL" />
           <button class="git-btn" @click="clone">Clone</button>
           <button class="git-btn" @click="download">Download</button>
         </div>
-        <div class="files">
+        <div v-if="hasFiles" class="files">
           <FileAccordion v-for="file in blog.activePost.files" :key="file.path" :file="file" />
+        </div>
+        <div v-else class="generate-files-empty">
+          <button class="generate-btn" :disabled="blog.isGeneratingFiles" @click="generateFiles()">
+            {{ blog.isGeneratingFiles ? 'Generating...' : 'Generate files' }}
+          </button>
         </div>
       </div>
     </template>
     <div class="back-bar">
+      <button
+        class="back-btn mobile-btn"
+        :disabled="blog.isFetchingPosts"
+        @click="blog.fetchPosts()"
+      >
+        {{ blog.isFetchingPosts ? 'Fetching posts...' : 'Fetch Posts' }}
+      </button>
+      <button
+        v-if="showMobileGenerateButton"
+        class="back-btn mobile-btn"
+        :disabled="blog.isGeneratingFiles"
+        @click="generateFiles()"
+      >
+        {{ blog.isGeneratingFiles ? 'Generating files...' : 'Generate files' }}
+      </button>
       <button class="back-btn" type="button" @click="blog.backToList()">← Back</button>
     </div>
   </section>
@@ -83,6 +112,9 @@ function download() {
 }
 .back-bar {
   display: none;
+}
+.mobile-btn {
+  margin-bottom: 0.5rem;
 }
 .back-btn {
   width: 100%;
@@ -198,6 +230,26 @@ function download() {
 }
 .git-btn:hover {
   background: var(--accent);
+}
+.generate-files-empty {
+  min-height: 8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.generate-btn {
+  height: 2.25rem;
+  padding: 0 1rem;
+  border-radius: 0.375rem;
+  border: none;
+  background: var(--primary);
+  color: var(--primary-foreground);
+  cursor: pointer;
+  font-weight: 600;
+}
+.generate-btn:disabled {
+  opacity: 0.7;
+  cursor: wait;
 }
 .files {
   display: flex;

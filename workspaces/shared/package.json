@@ -14,9 +14,17 @@
       "types": "./dist/entities.d.ts",
       "default": "./dist/entities.js"
     },
+    "./blog-api": {
+      "types": "./dist/blog-api.d.ts",
+      "default": "./dist/blog-api.js"
+    },
     "./daily-dev": {
       "types": "./dist/daily-dev-openapi/api.types.d.ts",
       "default": "./dist/daily-dev-openapi/api.types.js"
+    },
+    "./daily-dev-schema": {
+      "types": "./dist/daily-dev-openapi/schemas.d.ts",
+      "default": "./dist/daily-dev-openapi/schemas.js"
     },
     "./utils": {
       "types": "./dist/utils.d.ts",

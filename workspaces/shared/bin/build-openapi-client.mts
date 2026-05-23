@@ -40,7 +40,7 @@ function buildType(schema: object, parent?: object, indent = 0, importSpecifier?
       );
     }
 
-    const nullable = "nullable" in schema && schema.nullable ? " | null" : "";
+    const nullable = "nullable" in refSchema && refSchema.nullable ? " | null" : "";
     const prefix = importSpecifier ? `${importSpecifier}.` : "";
     return `${prefix}${refSchema.title}${nullable}`;
   }

@@ -11,7 +11,7 @@ const exportStatements = files
   .filter((f) => f.isFile() && f.name.endsWith(".ts") && !f.name.endsWith(".d.ts"))
   .map((f) => {
     const name = path.parse(f.name).name;
-    return `export type * from "./entities/${name}";`;
+    return `export * from "./entities/${name}";`;
   })
   .join("\n");
 

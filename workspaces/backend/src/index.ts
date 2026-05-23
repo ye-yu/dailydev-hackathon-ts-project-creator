@@ -4,6 +4,7 @@ import { parseArgs } from "node:util";
 import { createServer } from "node:http";
 import { router } from "./router.ts";
 import "./health/health.router.ts";
+import "./blog/blog.router.ts";
 import { PrefixedLogger } from "./logger/logger.ts";
 import { AppDataSource } from "@ye-yu/database/data-source";
 const console = new PrefixedLogger(import.meta.url);

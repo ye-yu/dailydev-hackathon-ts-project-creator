@@ -678,7 +678,7 @@ export type PatchUpdateCustomFeedAdvancedSettingsUseGETFeedsCustomAdvancedReques
 }
 
 export type PatchUpdateCustomFeedAdvancedSettingsUseGETFeedsCustomAdvancedResponse200 = {
-  data: Array<openapi.FeedAdvancedSettings>;
+  data: Array<openapi.FeedAdvancedSettings | null>;
 }
 
 export type PatchUpdateCustomFeedAdvancedSettingsUseGETFeedsCustomAdvancedResponse401 = openapi.Error

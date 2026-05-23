@@ -21,7 +21,7 @@ export interface CustomFeed {
   userId: string | null;
   slug: string | null;
   createdAt: string | null;
-  flags: CustomFeedFlags;
+  flags: CustomFeedFlags | null;
 }
 
 export interface FeedAdvancedSettings {
@@ -36,7 +36,7 @@ export interface FeedSettings {
   blockedTags: Array<string>;
   includeSources: Array<Source>;
   excludeSources: Array<Source>;
-  advancedSettings: Array<FeedAdvancedSettings>;
+  advancedSettings: Array<FeedAdvancedSettings | null>;
 }
 
 export interface NotificationAvatar {
@@ -97,7 +97,7 @@ export interface Profile {
   isPlus: boolean | null;
   experienceLevel: string | null;
   socialLinks: Array<SocialLink>;
-  location: UserLocation;
+  location: UserLocation | null;
 }
 
 export interface Tool {
@@ -148,7 +148,7 @@ export interface FeedPost {
   readTime: number | null;
   numUpvotes: number;
   numComments: number;
-  author: Author;
+  author: Author | null;
 }
 
 export interface PostDetail {
@@ -162,7 +162,7 @@ export interface PostDetail {
   createdAt: string;
   commentsPermalink: string;
   source: Source;
-  author: AuthorWithId;
+  author: AuthorWithId | null;
   tags: Array<string>;
   readTime: number | null;
   numUpvotes: number;
@@ -224,7 +224,7 @@ export interface BookmarkedPost {
   readTime: number | null;
   numUpvotes: number;
   numComments: number;
-  author: Author;
+  author: Author | null;
   bookmarkedAt: string;
 }
 
@@ -250,7 +250,7 @@ export interface Comment {
   numUpvotes: number;
   numAwards: number;
   author: CommentAuthor;
-  userState: CommentUserState;
+  userState: CommentUserState | null;
   children: Array<Comment>;
 }
 
@@ -295,13 +295,13 @@ export interface UserExperience {
   customCompanyName: string | null;
   customDomain: string | null;
   image: string | null;
-  employmentType: ProtoEnumValue;
-  locationType: ProtoEnumValue;
+  employmentType: ProtoEnumValue | null;
+  locationType: ProtoEnumValue | null;
   verified: boolean | null;
   url: string | null;
   isOwner: boolean | null;
   skills: Array<UserExperienceSkill>;
-  company: UserExperienceCompany;
-  customLocation: UserExperienceCustomLocation;
-  repository: UserExperienceRepository;
+  company: UserExperienceCompany | null;
+  customLocation: UserExperienceCustomLocation | null;
+  repository: UserExperienceRepository | null;
 }
