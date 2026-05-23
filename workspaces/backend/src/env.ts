@@ -3,4 +3,5 @@ export type Env = {
   DAILY_DEV_BASE_URL: string;
   DAILY_DEV_API_KEY: string;
   HTTP_ALLOW_ORIGIN: string;
+  NODE_TLS_REJECT_UNAUTHORIZED: string;
 };

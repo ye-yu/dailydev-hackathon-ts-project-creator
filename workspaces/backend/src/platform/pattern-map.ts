@@ -14,12 +14,12 @@ export class PatternMap<V = unknown> extends ExtendedMap<string, V> {
   candidateKeysBySegment = new ExtendedMap<number, Set<string>>();
 
   normalizeKey(key: string): string {
-    return key.startsWith('/') ? key : `/${key}`;
+    return key.startsWith("/") ? key : `/${key}`;
   }
 
   set(path: string, value: V): this {
     path = this.normalizeKey(path);
-    const segments = path.split('/').length;
+    const segments = path.split("/").length;
     this.candidateKeysBySegment.getOrInsertComputed(segments, () => new Set()).add(path);
 
     return super.set(path, value);
@@ -36,14 +36,14 @@ export class PatternMap<V = unknown> extends ExtendedMap<string, V> {
       return one([path, exactMatch, noParams]);
     }
 
-    const splitPath = path.split('/');
+    const splitPath = path.split("/").filter((e) => e);
     const segments = splitPath.length;
     const candidates = this.candidateKeysBySegment.getOrInsertComputed(segments, () => noKeys);
     return flatMap(candidates.values(), (candidate) => {
-      const splitCandidate = candidate.split('/');
+      const splitCandidate = candidate.split("/");
       const params = splitCandidate.reduce(
         (params, segment, i) => {
-          if (segment.startsWith(':')) {
+          if (segment.startsWith(":")) {
             const paramName = segment.slice(1);
             params[paramName] = splitPath[i];
           }
@@ -70,7 +70,7 @@ function* one<T>(item: T): IterableIterator<T> {
   yield item;
 }
 
-// eslint-disable-next-line require-yield
+// oxlint-disable-next-line require-yield
 function* none<T>(): IterableIterator<T> {
   return;
 }

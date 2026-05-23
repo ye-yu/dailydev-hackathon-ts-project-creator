@@ -9,6 +9,7 @@ let env: Env = {
   DAILY_DEV_BASE_URL: process.env.DAILY_DEV_BASE_URL || "",
   DAILY_DEV_API_KEY: process.env.DAILY_DEV_API_KEY || "",
   HTTP_ALLOW_ORIGIN: process.env.HTTP_ALLOW_ORIGIN || "",
+  NODE_TLS_REJECT_UNAUTHORIZED: process.env.NODE_TLS_REJECT_UNAUTHORIZED || "1",
 };
 
 export async function loadEnv(nodeEnv: "development" | "production" | "test") {

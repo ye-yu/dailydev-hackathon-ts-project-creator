@@ -49,6 +49,16 @@ if (!isAllowedEnv(env)) {
 
 await loadEnv(env);
 const config = getEnv();
+console.once(`Using environment: ${config.NODE_ENV}`);
+console.once(`Daily.dev Base URL: ${config.DAILY_DEV_BASE_URL}`);
+console.once(`Daily.dev API Key: ${config.DAILY_DEV_API_KEY ? "********" : "(not set)"}`);
+
+if (config.NODE_TLS_REJECT_UNAUTHORIZED === "0") {
+  console.warn(
+    "DANGER: NODE_TLS_REJECT_UNAUTHORIZED is set to 0. This means that TLS certificates will not be validated. This is not recommended for production environments.",
+  );
+  process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+}
 
 setDailyDevConfig(config.DAILY_DEV_BASE_URL, config.DAILY_DEV_API_KEY);
 const { resolve, reject, promise } = Promise.withResolvers<void>();

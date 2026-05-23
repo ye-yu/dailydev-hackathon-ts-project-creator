@@ -1,16 +1,17 @@
 export function createDailyDevRequestInit(
   id: string,
   method: string,
-  data: {
+  data?: {
     body?: object;
     searchParams?: object;
     pathParams?: object;
   },
-): RequestInit {
+): RequestInit & { url: string, id: string } {
   const { baseURL, authToken } = dailyDevConfig;
-  const urlStr = new URL(`${idToUrl[id]}`, baseURL);
+  const urlStr = new URL(baseURL);
+  urlStr.pathname = pathUnix.join(urlStr.pathname, `${idToUrl[id]}`)
 
-  const { body, searchParams, pathParams } = data;
+  const { body, searchParams, pathParams } = data ?? {};
   if (pathParams) {
     urlStr.pathname = urlStr.pathname.replace(
       /%7B(\w+)%7D/g,
@@ -31,9 +32,11 @@ export function createDailyDevRequestInit(
   }
 
   return {
+    id,
+    url: urlStr.toString(),
     method,
     headers: {
-      "Content-Type": "application/json",
+      ...(body? { "Content-Type": "application/json" } : null)
       "Authorization": `Bearer ${authToken}`,
     },
     ...(body ? { body: JSON.stringify(body) } : null),
