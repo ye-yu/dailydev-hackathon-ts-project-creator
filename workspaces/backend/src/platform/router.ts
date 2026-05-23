@@ -1,5 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { PrefixedLogger } from "../logger/logger.ts";
 import { ExtendedMap, PatternMap } from "./pattern-map.ts";
+
+const console = new PrefixedLogger(import.meta.url);
 
 type Middleware = (req: any, res: any, next: (err?: any) => void) => void;
 type ErrorMiddleware = (err: any, req: any, res: any, next: (err?: any) => void) => void;
@@ -132,6 +135,7 @@ export class Router<TMiddleware = Middleware, EMiddleware = ErrorMiddleware> imp
   }
 
   apply(method: Methods, path: string, ...middlewares: (TMiddleware | EMiddleware)[]) {
+    console.once(`Registering route: [${method.toUpperCase()}] ${path}`);
     const tmiddlewares = middlewares.filter((e) => this.isMiddleware(e));
     const emiddlewares = middlewares.filter((e) => this.isErrorMiddleware(e));
 

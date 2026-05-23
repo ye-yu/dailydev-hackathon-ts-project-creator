@@ -28,4 +28,8 @@ export class HttpResponse {
       res.end();
     }
   }
+
+  static ok(body: any = null, headers: Record<string, string> = {}) {
+    return new HttpResponse(200, body, headers);
+  }
 }
