@@ -15,6 +15,10 @@
     "./data-source": {
       "types": "./build/data-source.d.ts",
       "default": "./build/data-source.js"
+    },
+    "./test-data-source": {
+      "types": "./build/test-data-source.d.ts",
+      "default": "./build/test-data-source.js"
     }
   },
   "devDependencies": {

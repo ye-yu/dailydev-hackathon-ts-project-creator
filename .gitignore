@@ -41,5 +41,5 @@ __screenshots__/
 test-results/
 playwright-report/
 
-# Local SQLite database
-workspaces/database/data/database.sqlite
+# Local database and repositories
+workspaces/database/data

@@ -227,7 +227,8 @@ button {
   margin-top: 0.25rem;
 }
 .card .desc {
-  margin: 0;
+  margin: 0.5rem 0;
+  line-height: 1.5;
   font-size: 0.875rem;
   color: var(--muted-foreground);
   display: -webkit-box;

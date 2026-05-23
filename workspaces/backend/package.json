@@ -12,9 +12,10 @@
     "test": "node --test"
   },
   "dependencies": {
-    "@ye-yu/shared": "workspace:",
-    "@ye-yu/database": "workspace:",
     "@types/node": "catalog:",
-    "@typescript/native-preview": "catalog:"
+    "@typescript/native-preview": "catalog:",
+    "@ye-yu/database": "workspace:",
+    "@ye-yu/shared": "workspace:",
+    "node-git-server": "^1.0.0"
   }
 }

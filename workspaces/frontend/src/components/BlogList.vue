@@ -25,8 +25,6 @@ onMounted(() => {
       <button class="primary-btn" :disabled="blog.isFetchingPosts" @click="blog.fetchPosts()">
         {{ blog.isFetchingPosts ? 'Fetching...' : 'Fetch Posts' }}
       </button>
-
-      <p v-if="blog.lastFetchWarning" class="warning">{{ blog.lastFetchWarning }}</p>
     </div>
     <div class="cards">
       <BlogCard v-for="post in blog.filteredPosts" :key="post.id" :post="post" />
