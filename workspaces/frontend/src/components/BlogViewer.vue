@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useBlogStore } from '@/stores/blog'
+import { sleep } from '@/utils/delayed'
+import { useLoading } from '@/composables/useLoading'
 import FileAccordion from './FileAccordion.vue'
 
 const blog = useBlogStore()
@@ -27,7 +29,39 @@ function download() {
 }
 
 function generateFiles() {
-  void blog.generateFilesForActivePost()
+  blog.generateFilesForActivePost()
+}
+
+async function loadContentIfNeeded(): Promise<void> {
+  if (!blog.activePost) return
+  if (blog.activePost.content) {
+    await sleep(500)
+    // Content already loaded
+    return
+  }
+
+  try {
+    const response = await fetch(`/api/blog-posts/${blog.activePost.id}/load-content`, {
+      method: 'POST',
+    })
+    if (!response.ok) {
+      console.log('Failed to load content', await response.text())
+      throw new Error('Failed to load content')
+    }
+    const data = await response.json()
+    if (blog.activePost) {
+      blog.activePost.content = data.content || ''
+    }
+  } catch (error) {
+    console.error('Failed to load blog content:', error)
+    throw new Error('Failed to load content')
+  }
+}
+
+const contentLoader = useLoading(loadContentIfNeeded, () => blog.activePost)
+
+function viewPost() {
+  blog.setTab('post')
 }
 </script>
 
@@ -40,7 +74,7 @@ function generateFiles() {
           role="tab"
           :aria-selected="blog.activeTab === 'post'"
           :class="{ active: blog.activeTab === 'post' }"
-          @click="blog.setTab('post')"
+          @click="viewPost"
         >
           Blog Post
         </button>
@@ -61,7 +95,9 @@ function generateFiles() {
           <span v-for="t in blog.activePost.tags" :key="t" class="tag">{{ t }}</span>
         </div>
         <p class="desc">{{ blog.activePost.description }}</p>
-        <article class="content">{{ blog.activePost.content }}</article>
+        <article class="content">
+          {{ contentLoader.isLoadingContent.value ? 'Loading...' : blog.activePost.content }}
+        </article>
       </div>
 
       <div v-else class="tab-panel code">

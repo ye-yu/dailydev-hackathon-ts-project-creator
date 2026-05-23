@@ -105,3 +105,39 @@ export async function fetchAndCachePostsFromDailyDev(): Promise<FetchPostsResult
 export async function generateBlogFiles(postId: string): Promise<void> {
   console.info(`Generate files requested for post: ${postId}`);
 }
+
+export async function loadBlogContent(postId: string): Promise<BlogPost | null> {
+  const blogPostRepository = AppDataSource.getRepository(BlogPost);
+  const post = await blogPostRepository.findOne({ where: { id: postId } });
+  if (!post) {
+    // console.warn(`Blog post not found for id: ${postId}`);
+    return null;
+  }
+  if (post.content) {
+    return post;
+  }
+
+  const { url, ...request } = createDailyDevRequestInit("GetPostDetailsByID", "get", {
+    pathParams: {
+      id: postId,
+    },
+  });
+
+  const result = await fetch(url, request, true);
+  switch (result.status) {
+    case 200: {
+      const content = await result.json();
+      post.content = content.data.content || "<br />"; // no content
+      break;
+    }
+    default: {
+      console.warn(`Failed to load content for post ${postId}. Status: ${result.status}`);
+      return post; // return post without content
+    }
+  }
+
+  if (post.content) {
+    await blogPostRepository.update({ id: postId }, { content: post.content });
+  }
+  return post; // return post without content
+}

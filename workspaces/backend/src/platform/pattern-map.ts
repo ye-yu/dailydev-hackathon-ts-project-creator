@@ -19,7 +19,7 @@ export class PatternMap<V = unknown> extends ExtendedMap<string, V> {
 
   set(path: string, value: V): this {
     path = this.normalizeKey(path);
-    const segments = path.split("/").length;
+    const segments = path.split("/").filter((e) => e).length;
     this.candidateKeysBySegment.getOrInsertComputed(segments, () => new Set()).add(path);
 
     return super.set(path, value);
@@ -40,7 +40,20 @@ export class PatternMap<V = unknown> extends ExtendedMap<string, V> {
     const segments = splitPath.length;
     const candidates = this.candidateKeysBySegment.getOrInsertComputed(segments, () => noKeys);
     return flatMap(candidates.values(), (candidate) => {
-      const splitCandidate = candidate.split("/");
+      const splitCandidate = candidate.split("/").filter((e) => e);
+      if (!candidate.includes(":")) {
+        // no exact match, and this candidate doesn't have any params, so it can't match
+        return none();
+      }
+      for (let i = 0; i < splitCandidate.length; i++) {
+        const candidateSegment = splitCandidate[i];
+        if (candidateSegment.startsWith(":")) {
+          continue;
+        }
+        if (candidateSegment !== splitPath[i]) {
+          return none();
+        }
+      }
       const params = splitCandidate.reduce(
         (params, segment, i) => {
           if (segment.startsWith(":")) {
