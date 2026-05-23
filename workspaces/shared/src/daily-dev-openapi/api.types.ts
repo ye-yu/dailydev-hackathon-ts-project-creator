@@ -1892,6 +1892,7 @@ export function createDailyDevRequestInit(
     pathParams?: object;
   },
 ): RequestInit {
+  const { baseURL, authToken } = dailyDevConfig;
   const urlStr = new URL(`${idToUrl[id]}`, baseURL);
 
   const { body, searchParams, pathParams } = data;
@@ -1922,6 +1923,17 @@ export function createDailyDevRequestInit(
     ...(body ? { body: JSON.stringify(body) } : null),
   };
 }
+
+const dailyDevConfig = {
+  baseURL: "",
+  authToken: ""
+}
+
+export function setDailyDevConfig(baseURL: string, authToken: string) {
+  dailyDevConfig.baseURL = baseURL
+  dailyDevConfig.authToken = authToken
+}
+
 
 
 declare global {

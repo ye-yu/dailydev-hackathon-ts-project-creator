@@ -7,7 +7,9 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsgo -p ./tsconfig.build.json"
+    "build": "tsgo -p ./tsconfig.build.json",
+    "start": "node ./src/index.ts",
+    "test": "node --test"
   },
   "dependencies": {
     "@ye-yu/shared": "workspace:",

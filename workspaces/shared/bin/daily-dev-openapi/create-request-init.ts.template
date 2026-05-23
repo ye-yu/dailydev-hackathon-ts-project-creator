@@ -1,13 +1,3 @@
-const dailyDevConfig = {
-  baseURL: "",
-  authToken: ""
-}
-
-export function setDailyDevConfig(baseURL: string, authToken: string) {
-  dailyDevConfig.baseURL = baseURL
-  dailyDevConfig.authToken = authToken
-}
-
 export function createDailyDevRequestInit(
   id: string,
   method: string,
@@ -48,3 +38,14 @@ export function createDailyDevRequestInit(
     ...(body ? { body: JSON.stringify(body) } : null),
   };
 }
+
+const dailyDevConfig = {
+  baseURL: "",
+  authToken: ""
+}
+
+export function setDailyDevConfig(baseURL: string, authToken: string) {
+  dailyDevConfig.baseURL = baseURL
+  dailyDevConfig.authToken = authToken
+}
+
