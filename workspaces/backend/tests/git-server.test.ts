@@ -108,6 +108,7 @@ describe("Git Server", () => {
     for (const testRepos of fs
       .readdirSync(REPO_ROOT, { withFileTypes: true })
       .filter((d) => d.isDirectory() && d.name.startsWith("test-repo-"))) {
+      console.info(`Cleaning up test repo: ${testRepos.name}`);
       fs.rmSync(path.join(REPO_ROOT, testRepos.name), { recursive: true, force: true });
     }
 
