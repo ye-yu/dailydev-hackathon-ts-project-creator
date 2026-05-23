@@ -37,7 +37,7 @@
   "scripts": {
     "clean": "rimraf build tsconfig.build.tsbuildinfo",
     "generate:entities": "node ./bin/export-entities.cts",
-    "build": "tsgo -p ./tsconfig.build.json",
+    "build": "pnpm generate:entities && tsgo -p ./tsconfig.build.json",
     "start": "ts-node src/index.ts",
     "typeorm": "typeorm-ts-node-commonjs",
     "migration:generate": "pnpm build && node ./bin/create-migration.cts",
