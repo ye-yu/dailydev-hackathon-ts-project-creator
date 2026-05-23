@@ -282,7 +282,6 @@ for (const urlPath of Object.keys(paths) as (keyof typeof paths)[]) {
   }
 }
 
-apiTypesWriteStream.write(`\nconst baseURL = "https://dev.to/api";`);
 apiTypesWriteStream.write(`\nconst idToUrl: Record<string, string> = {\n`);
 for (const override of createRequestInitOverrides) {
   apiTypesWriteStream.write(`  "${override.id}": "${override.path}",\n`);

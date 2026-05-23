@@ -7,5 +7,5 @@
     "verbatimModuleSyntax": true,
     "types": ["node"]
   },
-  "include": ["bin"]
+  "include": ["bin", "dist", "src"]
 }

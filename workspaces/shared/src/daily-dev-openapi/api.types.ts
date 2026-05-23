@@ -1631,7 +1631,6 @@ export interface GetEXPERIMENTALRecommendArticlesBySemanticSearchUsesAIPoweredAP
   response: GetEXPERIMENTALRecommendArticlesBySemanticSearchUsesAIPoweredResponse;
 }
 
-const baseURL = "https://dev.to/api";
 const idToUrl: Record<string, string> = {
   "GetPersonalizedForYouFeed": "/feeds/foryou",
   "GetFeedWithTrendingAndPopularPosts": "/feeds/popular",
@@ -1919,6 +1918,7 @@ export function createDailyDevRequestInit(
     method,
     headers: {
       "Content-Type": "application/json",
+      "Authorization": `Bearer ${authToken}`,
     },
     ...(body ? { body: JSON.stringify(body) } : null),
   };
