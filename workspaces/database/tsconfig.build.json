@@ -1,7 +1,9 @@
 {
   "extends": "./tsconfig.src.json",
-  "exclude": ["tests", "build", "bin", "dist"],
+  "exclude": ["tests", "build", "bin"],
   "compilerOptions": {
-    "incremental": true
+    "incremental": true,
+    "declaration": true,
+    "outDir": "build"
   }
 }

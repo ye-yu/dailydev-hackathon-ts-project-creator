@@ -11,7 +11,7 @@ export const getHealth: HttpMiddleware = async (_, __, next) => {
     dailyDev: {
       reachable: isDailyDevHealthy,
     },
-    sqlite: {
+    database: {
       reachable: isSqliteHealthy,
     },
   });

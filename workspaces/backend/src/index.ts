@@ -5,6 +5,7 @@ import { createServer } from "node:http";
 import { router } from "./router.ts";
 import "./health/health.router.ts";
 import { PrefixedLogger } from "./logger/logger.ts";
+import { AppDataSource } from "@ye-yu/database/data-source";
 const console = new PrefixedLogger(import.meta.url);
 
 const { values } = parseArgs({
@@ -61,6 +62,9 @@ if (config.NODE_TLS_REJECT_UNAUTHORIZED === "0") {
 }
 
 setDailyDevConfig(config.DAILY_DEV_BASE_URL, config.DAILY_DEV_API_KEY);
+
+await AppDataSource.initialize();
+
 const { resolve, reject, promise } = Promise.withResolvers<void>();
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const server = createServer(router.handle.bind(router) as any);

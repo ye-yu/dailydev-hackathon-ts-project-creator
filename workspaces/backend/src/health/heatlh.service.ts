@@ -1,14 +1,9 @@
 import { createDailyDevRequestInit } from "@ye-yu/shared/daily-dev";
 import { PrefixedLogger } from "../logger/logger.ts";
 import { createCurlCommand } from "@ye-yu/shared/utils";
-import { access } from "node:fs/promises";
-import { constants } from "node:fs";
-import { resolve } from "node:path";
-import { fileURLToPath } from "node:url";
+import { AppDataSource } from "@ye-yu/database/data-source";
 
 const console = new PrefixedLogger(import.meta.url);
-const scriptDir = fileURLToPath(new URL(".", import.meta.url));
-const sqliteDbPath = resolve(scriptDir, "../../../database/data/database.sqlite");
 
 export async function getDailyDevHealth(): Promise<boolean> {
   const { url, ...request } = createDailyDevRequestInit("GetCurrentUserSProfile", "get");
@@ -41,27 +36,9 @@ export async function getDailyDevHealth(): Promise<boolean> {
 
 export async function getSqliteHealth(): Promise<boolean> {
   try {
-    const { DatabaseSync } = await import("node:sqlite");
-    const db = new DatabaseSync(sqliteDbPath, { open: true, readOnly: true });
-    db.prepare("SELECT 1").get();
-    db.close();
+    await AppDataSource.query("SELECT 1");
     return true;
   } catch (error) {
-    if (
-      error !== null &&
-      typeof error === "object" &&
-      "code" in error &&
-      error.code === "ERR_UNKNOWN_BUILTIN_MODULE"
-    ) {
-      try {
-        await access(sqliteDbPath, constants.R_OK);
-        return true;
-      } catch {
-        console.error("SQLite health check failed (fallback file check):", sqliteDbPath);
-        return false;
-      }
-    }
-
     console.error("SQLite health check failed:", error);
     return false;
   }
