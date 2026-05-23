@@ -3,7 +3,7 @@ import { router } from "./router.ts";
 import "./health/health.router.ts";
 import "./blog/blog.router.ts";
 import "./git/git.router.ts";
-import { PrefixedLogger } from "./logger/logger.ts";
+import { PrefixedLogger } from "@ye-yu/shared/logger";
 
 const console = new PrefixedLogger(import.meta.url);
 

@@ -5,7 +5,7 @@ import os from "node:os";
 import { spawn } from "node:child_process";
 import type { AppDataSource } from "@ye-yu/database/data-source";
 import { BlogPost } from "@ye-yu/database";
-import { PrefixedLogger } from "../logger/logger.ts";
+import { PrefixedLogger } from "@ye-yu/shared/logger";
 import type { HttpMiddleware } from "../platform/http-router.ts";
 
 const console = new PrefixedLogger(import.meta.url);

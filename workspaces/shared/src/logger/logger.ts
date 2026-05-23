@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { styleText } from "node:util";
+import * as path from "node:path";
 import { removeCwdFromUrl } from "./utils.ts";
 import { logOnce } from "./log-once.ts";
 
@@ -97,7 +98,7 @@ export class PrefixedLogger {
   readonly color: ForegroundColors;
 
   constructor(prefix: string, color?: ForegroundColors) {
-    if (prefix.startsWith("file://")) {
+    if (prefix.startsWith("file://") || path.isAbsolute(prefix)) {
       prefix = removeCwdFromUrl(prefix);
     }
     this.#prefix = prefix;
@@ -114,7 +115,7 @@ export class PrefixedLogger {
   }
 
   line(...args: unknown[]): this {
-    console.log("".padStart(lastPrefixWidth + 9), args.map(stringify).join(" "));
+    console.debug("".padStart(lastPrefixWidth + 9), args.map(stringify).join(" "));
     return this;
   }
 

@@ -2,8 +2,8 @@ import { createRequire } from "node:module";
 import * as path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
-export const toFileURL = (path: string) =>
-  path.startsWith("file://") ? path : pathToFileURL(path).href;
+export const toFileURL = (filePath: string) =>
+  filePath.startsWith("file://") ? filePath : pathToFileURL(filePath).href;
 
 export const toPath = (url: string) => (url.startsWith("file://") ? fileURLToPath(url) : url);
 

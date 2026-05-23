@@ -1,7 +1,7 @@
 import { setDailyDevConfig } from "@ye-yu/shared/daily-dev";
 import { loadEnv, getEnv } from "./config.ts";
 import { parseArgs } from "node:util";
-import { PrefixedLogger } from "./logger/logger.ts";
+import { PrefixedLogger } from "@ye-yu/shared/logger";
 import { AppDataSource } from "@ye-yu/database/data-source";
 import { setGitServerDataSource } from "./git/git.server.ts";
 import { startAPIServer } from "./server.ts";

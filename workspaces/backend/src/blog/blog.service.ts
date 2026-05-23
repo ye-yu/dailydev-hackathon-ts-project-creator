@@ -1,7 +1,7 @@
 import type { BlogPostLazy } from "@ye-yu/shared/entities";
 import { createDailyDevRequestInit } from "@ye-yu/shared/daily-dev";
 import { AppDataSource } from "@ye-yu/database/data-source";
-import { PrefixedLogger } from "../logger/logger.ts";
+import { PrefixedLogger } from "@ye-yu/shared/logger";
 import { BlogPost, DailyDevFetchState } from "@ye-yu/database";
 import type { FeedPost } from "@ye-yu/shared/daily-dev-schema";
 

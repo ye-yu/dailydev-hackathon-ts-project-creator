@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { PrefixedLogger } from "../logger/logger.ts";
+import { PrefixedLogger } from "@ye-yu/shared/logger";
 import { ExtendedMap, PatternMap } from "./pattern-map.ts";
 
 const console = new PrefixedLogger(import.meta.url);

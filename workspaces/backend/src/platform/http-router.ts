@@ -3,6 +3,9 @@ import { createServer, type IncomingMessage, type ServerResponse } from "http";
 import { type Methods, Router } from "./router.ts";
 import { HttpResponse } from "./http-response.ts";
 import { HttpError } from "./http-errors.ts";
+import { PrefixedLogger } from "@ye-yu/shared/logger";
+
+const console = new PrefixedLogger(import.meta.url);
 
 type ServerRequest = IncomingMessage & {
   params?: Record<string, string>;
@@ -180,7 +183,7 @@ export async function handleRequest<
 
   if (res.writableEnded) return;
   if (error) {
-    console.log("Error occurred but writes have not ended, sending 500 response", error);
+    console.debug("Error occurred but writes have not ended, sending 500 response", error);
     res.statusCode = 500;
     res.end("Internal Server Error");
   } else {

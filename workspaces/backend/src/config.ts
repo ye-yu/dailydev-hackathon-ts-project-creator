@@ -2,7 +2,7 @@ import type { Env } from "./env.ts";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
-import { PrefixedLogger } from "./logger/logger.ts";
+import { PrefixedLogger } from "@ye-yu/shared/logger";
 
 const scriptDir = fileURLToPath(new URL(".", import.meta.url));
 const console = new PrefixedLogger(import.meta.url);

@@ -2,7 +2,9 @@ import path from "node:path";
 import fs from "node:fs";
 import openapiJson from "./daily-dev-openapi/openapi.json" with { type: "json" };
 import { fileURLToPath } from "node:url";
+import { PrefixedLogger } from "../src/logger/logger.ts";
 const scriptDir = fileURLToPath(new URL(".", import.meta.url));
+const console = new PrefixedLogger(import.meta.url);
 const dir = path.join(scriptDir, "..", "src", "daily-dev-openapi");
 fs.mkdirSync(dir, { recursive: true });
 

@@ -29,6 +29,10 @@
     "./utils": {
       "types": "./dist/utils.d.ts",
       "default": "./dist/utils.js"
+    },
+    "./logger": {
+      "types": "./dist/logger/logger.d.ts",
+      "default": "./dist/logger/logger.js"
     }
   },
   "dependencies": {

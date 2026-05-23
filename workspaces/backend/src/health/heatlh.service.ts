@@ -1,5 +1,5 @@
 import { createDailyDevRequestInit } from "@ye-yu/shared/daily-dev";
-import { PrefixedLogger } from "../logger/logger.ts";
+import { PrefixedLogger } from "@ye-yu/shared/logger";
 import { createCurlCommand } from "@ye-yu/shared/utils";
 import { AppDataSource } from "@ye-yu/database/data-source";
 

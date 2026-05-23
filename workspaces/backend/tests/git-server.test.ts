@@ -12,7 +12,7 @@ import {
   REPO_ROOT,
   BARE_ROOT,
 } from "../src/git/git.server.ts";
-import { PrefixedLogger } from "../src/logger/logger.ts";
+import { PrefixedLogger } from "@ye-yu/shared/logger";
 import { startAPIServer } from "../src/server.ts";
 
 const PORT = 7099;
