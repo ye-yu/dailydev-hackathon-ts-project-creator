@@ -68,6 +68,10 @@ const contentLoader = useLoading(loadContentIfNeeded, () => blog.activePost)
 function viewPost() {
   blog.setTab('post')
 }
+
+function viewCode() {
+  blog.setTab('code')
+}
 </script>
 
 <template>

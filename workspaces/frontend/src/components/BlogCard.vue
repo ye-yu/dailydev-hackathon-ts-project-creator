@@ -2,12 +2,14 @@
 import { computed } from 'vue'
 import { useBlogStore, type ViewerTab } from '@/stores/blog'
 import type { BlogPostLazy } from '@ye-yu/shared/entities'
+import { renderMarkdownInline } from '@/utils/markdown'
 
 const props = defineProps<{ post: BlogPostLazy }>()
 const blog = useBlogStore()
 
 const isActive = computed(() => blog.activePostId === props.post.id)
 const activeTab = computed(() => (isActive.value ? blog.activeTab : null))
+const descriptionHtml = computed(() => renderMarkdownInline(props.post.description))
 
 const formattedDate = computed(() =>
   new Date(props.post.timestamp).toLocaleDateString(undefined, {
@@ -31,7 +33,7 @@ function open(tab: ViewerTab) {
     <div class="tags">
       <span v-for="t in post.tags" :key="t" class="tag">{{ t }}</span>
     </div>
-    <p class="desc">{{ post.description }}</p>
+    <p class="desc" v-html="descriptionHtml"></p>
     <footer>
       <button
         class="secondary-btn"
@@ -98,6 +100,9 @@ h4 {
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+.desc :deep(a) {
+  color: inherit;
 }
 footer {
   display: flex;
