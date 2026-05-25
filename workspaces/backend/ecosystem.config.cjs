@@ -3,6 +3,7 @@ module.exports = {
     {
       name: 'ye-yu-backend',
       script: './dist/index.js',
+      args: ['-e', 'production'],
       cwd: __dirname,
       env: {
         NODE_ENV: 'production',
