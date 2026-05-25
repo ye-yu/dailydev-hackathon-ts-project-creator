@@ -23,14 +23,22 @@ const formattedDate = computed(() => {
   return new Date(p.timestamp).toLocaleString()
 })
 
+const gitUrl = computed(() => {
+  if (!blog.activePost) return ''
+  const origin = new URL(`${window.location}`).origin
+  const pathName = blog.activePost?.gitUrl
+  const fullUrl = new URL(pathName, origin).href
+  return fullUrl
+})
+
 function clone() {
   const url = blog.activePost?.gitUrl
-  if (url) navigator.clipboard?.writeText(`git clone ${url}`)
+  if (url) navigator.clipboard?.writeText(`git clone ${gitUrl.value}`)
 }
 
 function download() {
   const url = blog.activePost?.gitUrl
-  if (url) window.open(url.replace(/\.git$/, '/archive/refs/heads/main.zip'), '_blank')
+  if (url) window.open(gitUrl.value.replace(/\.git$/, '/archive/refs/heads/main.zip'), '_blank')
 }
 
 function generateFiles() {
