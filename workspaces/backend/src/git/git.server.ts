@@ -190,6 +190,7 @@ export function getGitHandler(): HttpMiddleware {
   const handler = repos.handle.bind(repos)
   return (req, res, _) => {
     console.debug(`Git server received request: ${req.method} ${req.url}`)
+    req.url = req.url?.replace(/^\/git/, '') ?? req.url
     handler(req, res)
   }
 }
