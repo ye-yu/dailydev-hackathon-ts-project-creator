@@ -136,6 +136,8 @@ repos.on('fetch', (fetch) => {
 })
 
 export async function createBareRepositoryIfNotExist(repoNameWithoutDotGit: string) {
+  const bareDir = path.join(BARE_ROOT, `${repoNameWithoutDotGit}.git`)
+  if (fs.existsSync(bareDir)) return
   await new Promise<void>((resolve, reject) => {
     repos.create(repoNameWithoutDotGit, (err) => (err ? reject(err) : resolve()))
   })
@@ -182,5 +184,8 @@ export async function createRepository(
 
 export function getGitHandler(): HttpMiddleware {
   const handler = repos.handle.bind(repos)
-  return (req, res, _) => handler(req, res)
+  return (req, res, _) => {
+    console.debug(`Git server received request: ${req.method} ${req.url}`)
+    handler(req, res)
+  }
 }
