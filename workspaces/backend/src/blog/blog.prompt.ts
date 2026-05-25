@@ -37,6 +37,7 @@ async function runCommand(executable: string, args: string[], cwd?: string): Pro
   const start = new Date()
   await new Promise<void>((resolve, reject) => {
     const child = spawn(executable, args, { cwd, stdio: ['ignore', 'pipe', 'pipe'] })
+    child.stdout.on('data', (c) => console.debug(c.toString()))
     let stderr = ''
     child.stderr.on('data', (c) => (stderr += c.toString()))
     child.on('error', reject)
@@ -83,7 +84,17 @@ export async function generateGitRepoFromBlogContent(blogPost: BlogPostLazy): Pr
   const promptFilePath = path.join(promptPath, `${descriptionToIdentifier(title)}.txt`)
   fs.writeFileSync(promptFilePath, prompt)
   await runCommand('echo', ['saved prompts in', promptFilePath], process.cwd())
-  await runCommand('echo', ['run openclaw at', promptPath], process.cwd())
+  await runCommand('echo', ['running openclaw at', promptPath], process.cwd())
+  const openClawCommands = [
+    'openclaw',
+    'agent',
+    '--agent',
+    'main',
+    '--message',
+    `process all .txt prompts at /root/git-items/dailydev-hackathon-ts-project-creator/workspaces/database/data/repositories/prompts and move the file to *.txt.done when finished.`,
+  ]
+  await runCommand('echo', openClawCommands, process.cwd())
+  await runCommand(openClawCommands[0], openClawCommands.slice(1), process.cwd())
 
   const repoPath = `${REPO_ROOT}/${descriptionToIdentifier(title)}`
   console.info(`git repo generated for blog post "${title}" at ${repoPath}`)
