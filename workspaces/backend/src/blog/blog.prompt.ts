@@ -1,4 +1,6 @@
 import { spawn } from 'node:child_process'
+import fs from 'node:fs'
+import path from 'node:path'
 import { REPO_ROOT } from '../git/git.server.ts'
 import type { BlogPostLazy } from '@ye-yu/shared/entities'
 import { AppDataSource } from '@ye-yu/database/data-source'
@@ -71,7 +73,18 @@ export async function generateGitRepoFromBlogContent(blogPost: BlogPostLazy): Pr
   const prompt = BLOG_PROMPT.replace('{description}', description)
     .replace('{content}', content)
     .replace('{repoName}', descriptionToIdentifier(title))
-  await runCommand('echo', ['testing prompt', prompt], process.cwd())
+  const promptPath = path.resolve(REPO_ROOT, 'prompts')
+  const promptStat = fs.statSync(promptPath, { throwIfNoEntry: false })
+  if (!promptStat) {
+    fs.mkdirSync(promptPath, { recursive: true })
+  } else if (!promptStat.isDirectory()) {
+    throw new Error(`Prompt path exists but is not a directory: ${promptPath}`)
+  }
+  const promptFilePath = path.join(promptPath, `${descriptionToIdentifier(title)}.txt`)
+  fs.writeFileSync(promptFilePath, prompt)
+  await runCommand('echo', ['saved prompts in', promptFilePath], process.cwd())
+  await runCommand('echo', ['run openclaw at', promptPath], process.cwd())
+
   const repoPath = `${REPO_ROOT}/${descriptionToIdentifier(title)}`
   console.info(`git repo generated for blog post "${title}" at ${repoPath}`)
   // TODO: search through the new git repo, scan for "snippets" directory, and extract code snippets and save to
