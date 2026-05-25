@@ -4,6 +4,7 @@ import { AppDataSource } from '@ye-yu/database/data-source'
 import { PrefixedLogger } from '@ye-yu/shared/logger'
 import { BlogPost, DailyDevFetchState } from '@ye-yu/database'
 import type { FeedPost } from '@ye-yu/shared/daily-dev-schema'
+import { generateGitRepoFromBlogContent } from './blog.prompt.ts'
 
 const console = new PrefixedLogger(import.meta.url)
 const FETCH_STATE_KEY = 'daily-dev-posts'
@@ -103,7 +104,12 @@ export async function fetchAndCachePostsFromDailyDev(): Promise<FetchPostsResult
 }
 
 export async function generateBlogFiles(postId: string): Promise<void> {
-  console.info(`Generate files requested for post: ${postId}`)
+  const blogPostRepository = AppDataSource.getRepository(BlogPost)
+  const post = await blogPostRepository.findOne({ where: { id: postId } })
+  if (!post) {
+    throw new Error("Not found")
+  }
+  await generateGitRepoFromBlogContent(post.content, post)
 }
 
 export async function loadBlogContent(postId: string): Promise<BlogPost | null> {
