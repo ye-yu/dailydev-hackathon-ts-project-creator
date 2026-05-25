@@ -107,7 +107,7 @@ export async function generateBlogFiles(postId: string): Promise<void> {
   const blogPostRepository = AppDataSource.getRepository(BlogPost)
   const post = await blogPostRepository.findOne({ where: { id: postId } })
   if (!post) {
-    throw new Error("Not found")
+    throw new Error('Not found')
   }
   await generateGitRepoFromBlogContent(post.content, post)
 }

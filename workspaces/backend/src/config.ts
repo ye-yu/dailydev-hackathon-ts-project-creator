@@ -17,7 +17,10 @@ let env: Env = {
 }
 
 export async function loadEnv(nodeEnv: 'development' | 'production' | 'test') {
-  const expectedPath = nodeEnv === 'production' ? path.join(scriptDir, `./env.${nodeEnv}.js`) : path.join(scriptDir, `./env.${nodeEnv}.ts`)
+  const expectedPath =
+    nodeEnv === 'production'
+      ? path.join(scriptDir, `./env.${nodeEnv}.js`)
+      : path.join(scriptDir, `./env.${nodeEnv}.ts`)
   try {
     env = await import(pathToFileURL(expectedPath).toString()).then((e) => e.default)
     console.once(`Using environment: ${env.NODE_ENV}`)

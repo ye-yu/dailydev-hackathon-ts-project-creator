@@ -6,7 +6,7 @@ import { AppDataSource } from '@ye-yu/database/data-source'
 const console = new PrefixedLogger(import.meta.url)
 
 export async function getDailyDevHealth(): Promise<boolean> {
-  let curlCommandTry = ""
+  let curlCommandTry = ''
   try {
     const { url, ...request } = createDailyDevRequestInit('GetCurrentUserSProfile', 'get')
     curlCommandTry = createCurlCommand(url, request)

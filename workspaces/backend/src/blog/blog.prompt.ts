@@ -1,8 +1,8 @@
-import { spawn } from "node:child_process"
-import { REPO_ROOT } from "../git/git.server.ts"
-import type { BlogPostLazy } from "@ye-yu/shared/entities"
-import { AppDataSource } from "@ye-yu/database/data-source"
-import { BlogPost } from "@ye-yu/database"
+import { spawn } from 'node:child_process'
+import { REPO_ROOT } from '../git/git.server.ts'
+import type { BlogPostLazy } from '@ye-yu/shared/entities'
+import { AppDataSource } from '@ye-yu/database/data-source'
+import { BlogPost } from '@ye-yu/database'
 
 export const BLOG_PROMPT = `
 // TODO: improve prompt
@@ -25,25 +25,31 @@ Generate working git directory with initial codebase based on the blog content p
 `
 
 async function runCommand(executable: string, args: string[], cwd?: string): Promise<void> {
-    const start = new Date()
-    await new Promise<void>((resolve, reject) => {
+  const start = new Date()
+  await new Promise<void>((resolve, reject) => {
     const child = spawn(executable, args, { cwd, stdio: ['ignore', 'pipe', 'pipe'] })
     let stderr = ''
     child.stderr.on('data', (c) => (stderr += c.toString()))
     child.on('error', reject)
-    child.on('exit', (code) => code === 0
-      ? resolve()
-      : reject(new Error(`${executable} ${args.join(' ')} failed (${code}): ${stderr.trim()}`)))
+    child.on('exit', (code) =>
+      code === 0
+        ? resolve()
+        : reject(new Error(`${executable} ${args.join(' ')} failed (${code}): ${stderr.trim()}`)),
+    )
   })
   const duration = new Date().getTime() - start.getTime()
   console.debug(
-    `${executable} ${args.map((e) => (e.includes(' ') ? `"${e}"` : e)).join(' ')} completed in ${duration}ms`)
+    `${executable} ${args.map((e) => (e.includes(' ') ? `"${e}"` : e)).join(' ')} completed in ${duration}ms`,
+  )
 }
 
-export async function generateGitRepoFromBlogContent(content: string, blogPost: BlogPostLazy): Promise<void> {
+export async function generateGitRepoFromBlogContent(
+  content: string,
+  blogPost: BlogPostLazy,
+): Promise<void> {
   const prompt = BLOG_PROMPT.replace('{content}', content)
-  await runCommand("echo", ["testing prompt", prompt], process.cwd())
+  await runCommand('echo', ['testing prompt', prompt], process.cwd())
   // TODO: search through the new git repo, scan for "snippets" directory, and extract code snippets and save to
-  const blogPostRepo= AppDataSource.getRepository(BlogPost)
-  await blogPostRepo.update(blogPost.id, { gitUrl: "", files: [] })
+  const blogPostRepo = AppDataSource.getRepository(BlogPost)
+  await blogPostRepo.update(blogPost.id, { gitUrl: '', files: [] })
 }

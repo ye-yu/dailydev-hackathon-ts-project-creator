@@ -76,7 +76,9 @@ async function performRollingUpdate() {
     console.log('Starting new instance for rolling update...')
 
     // Save the old instance IDs before restarting
-    const oldInstanceIds = currentInstances.map((p) => p.pm_id).filter(e => typeof e === 'number') as number[]
+    const oldInstanceIds = currentInstances
+      .map((p) => p.pm_id)
+      .filter((e) => typeof e === 'number') as number[]
 
     // Restart the app (PM2 will start a new instance)
     await pm2Restart(APP_NAME)
