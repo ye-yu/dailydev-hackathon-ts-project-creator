@@ -112,5 +112,5 @@ export async function generateGitRepoFromBlogContent(blogPost: BlogPostLazy): Pr
   console.info(`git repo generated for blog post "${title}" at ${repoPath}`)
   // TODO: search through the new git repo, scan for "snippets" directory, and extract code snippets and save to
   const blogPostRepo = AppDataSource.getRepository(BlogPost)
-  await blogPostRepo.update(blogPost.id, { gitUrl: '', files: [] })
+  await blogPostRepo.update(blogPost.id, { gitUrl: `/git/${repoName}.git`, files: [] })
 }
