@@ -30,7 +30,7 @@ Generate working git directory with initial codebase based on the blog content p
 # in ${REPO_ROOT}/{repoName}
 git add .
 git commit -m "Initial commit"
-git push --mirror ${REPO_ROOT}/{repoName}.git
+git push --mirror ${REPO_ROOT}/.bare/{repoName}.git
 </GIT_COMMAND
 
 <BLOG_DESCRIPTION>
