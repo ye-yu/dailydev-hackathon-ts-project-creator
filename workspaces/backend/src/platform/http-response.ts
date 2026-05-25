@@ -1,35 +1,35 @@
-import type { ServerResponse } from "node:http";
+import type { ServerResponse } from 'node:http'
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export class HttpResponse {
-  statusCode: number;
-  headers: Record<string, string>;
-  body?: any;
+  statusCode: number
+  headers: Record<string, string>
+  body?: any
 
   constructor(statusCode: number, body: any = null, headers: Record<string, string> = {}) {
-    this.statusCode = statusCode;
-    this.body = body;
-    this.headers = headers;
+    this.statusCode = statusCode
+    this.body = body
+    this.headers = headers
   }
 
   reply(res: ServerResponse): void {
-    res.statusCode = this.statusCode;
+    res.statusCode = this.statusCode
     for (const [key, value] of Object.entries(this.headers)) {
-      res.setHeader(key, value);
+      res.setHeader(key, value)
     }
     if (this.body !== undefined && this.body !== null) {
-      if (typeof this.body === "object") {
-        res.setHeader("Content-Type", "application/json");
-        res.end(JSON.stringify(this.body));
+      if (typeof this.body === 'object') {
+        res.setHeader('Content-Type', 'application/json')
+        res.end(JSON.stringify(this.body))
       } else {
-        res.end(String(this.body));
+        res.end(String(this.body))
       }
     } else {
-      res.end();
+      res.end()
     }
   }
 
   static ok(body: any = null, headers: Record<string, string> = {}) {
-    return new HttpResponse(200, body, headers);
+    return new HttpResponse(200, body, headers)
   }
 }

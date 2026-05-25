@@ -15,7 +15,7 @@
     "lint": "run-s lint:*",
     "lint:oxlint": "oxlint . --fix",
     "lint:eslint": "eslint . --fix --cache",
-    "format": "oxfmt src/",
+    "format": "oxfmt ./workspaces/backend/bin/ ./workspaces/backend/src/ ./workspaces/database/bin/ ./workspaces/database/src/ ./workspaces/shared/bin/ ./workspaces/shared/src/ ./workspaces/frontend/bin/ ./workspaces/frontend/src/ --write",
     "install:all": "pnpm install -r",
     "frontend:dev": "pnpm --filter @ye-yu/frontend dev"
   },

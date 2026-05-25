@@ -1,4 +1,4 @@
-import { router } from "../router.ts";
-import { getGitHandler } from "./git.server.ts";
+import { router } from '../router.ts'
+import { getGitHandler } from './git.server.ts'
 
-router.use("/git", getGitHandler());
+router.use('/git', getGitHandler())

@@ -1,10 +1,10 @@
-import { Column, Entity, PrimaryColumn } from "typeorm";
+import { Column, Entity, PrimaryColumn } from 'typeorm'
 
 @Entity()
 export class DailyDevFetchState {
   @PrimaryColumn()
-  key!: string;
+  key!: string
 
   @Column()
-  lastFetchedAt!: string;
+  lastFetchedAt!: string
 }

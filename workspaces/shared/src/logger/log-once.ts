@@ -1,10 +1,10 @@
-const loggedMessages = new Set<string>();
+const loggedMessages = new Set<string>()
 
 export function logOnce(...messages: unknown[]) {
-  const messageKey = messages.map((msg) => JSON.stringify(msg)).join("|");
+  const messageKey = messages.map((msg) => JSON.stringify(msg)).join('|')
   if (loggedMessages.has(messageKey)) {
-    return;
+    return
   }
-  loggedMessages.add(messageKey);
-  console.debug(...messages);
+  loggedMessages.add(messageKey)
+  console.debug(...messages)
 }

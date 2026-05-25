@@ -9,7 +9,15 @@
   "scripts": {
     "build": "tsgo -p ./tsconfig.build.json",
     "start": "node ./src/index.ts",
+    "start:pm2": "pm2 start ecosystem.config.cjs",
+    "start:pm2:watch": "pm2 start ecosystem.config.cjs --watch",
+    "reload:pm2": "node ./bin/rolling-update.ts",
+    "stop:pm2": "pm2 stop ye-yu-backend",
+    "delete:pm2": "pm2 delete ye-yu-backend",
     "test": "node --test"
+  },
+  "devDependencies": {
+    "pm2": "^5.4.0"
   },
   "dependencies": {
     "@types/node": "catalog:",

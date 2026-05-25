@@ -1,38 +1,38 @@
-import { Entity, PrimaryColumn, Column, OneToMany } from "typeorm";
-import { BlogFile } from "./BlogFile";
+import { Entity, PrimaryColumn, Column, OneToMany } from 'typeorm'
+import { BlogFile } from './BlogFile'
 
 @Entity()
 export class BlogPost {
   @PrimaryColumn()
-  id!: string;
+  id!: string
 
   @Column()
-  title!: string;
+  title!: string
 
   @Column()
-  timestamp!: string;
+  timestamp!: string
 
   @Column()
-  author!: string;
+  author!: string
 
-  @Column("simple-array")
-  tags!: string[];
-
-  @Column()
-  description!: string;
-
-  @Column("text")
-  content!: string;
+  @Column('simple-array')
+  tags!: string[]
 
   @Column()
-  gitUrl!: string;
+  description!: string
+
+  @Column('text')
+  content!: string
 
   @Column()
-  dailyDevUrl!: string;
+  gitUrl!: string
 
   @Column()
-  externalUrl!: string;
+  dailyDevUrl!: string
+
+  @Column()
+  externalUrl!: string
 
   @OneToMany(() => BlogFile, (file) => file.post, { cascade: true })
-  files!: BlogFile[];
+  files!: BlogFile[]
 }
