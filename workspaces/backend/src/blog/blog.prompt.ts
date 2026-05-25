@@ -1,7 +1,7 @@
 import { spawn } from 'node:child_process'
 import fs from 'node:fs'
 import path from 'node:path'
-import { REPO_ROOT } from '../git/git.server.ts'
+import { createRepository, REPO_ROOT } from '../git/git.server.ts'
 import type { BlogPostLazy } from '@ye-yu/shared/entities'
 import { AppDataSource } from '@ye-yu/database/data-source'
 import { BlogPost } from '@ye-yu/database'
@@ -80,9 +80,10 @@ function descriptionToIdentifier(description: string, method = ''): string {
 
 export async function generateGitRepoFromBlogContent(blogPost: BlogPostLazy): Promise<void> {
   const { title, description, content } = blogPost
+  const repoName = descriptionToIdentifier(title)
   const prompt = BLOG_PROMPT.replace('{description}', description)
     .replace('{content}', content)
-    .replace('{repoName}', descriptionToIdentifier(title))
+    .replace('{repoName}', repoName)
   const promptPath = path.resolve(REPO_ROOT, 'prompts')
   const promptStat = fs.statSync(promptPath, { throwIfNoEntry: false })
   if (!promptStat) {
@@ -90,7 +91,13 @@ export async function generateGitRepoFromBlogContent(blogPost: BlogPostLazy): Pr
   } else if (!promptStat.isDirectory()) {
     throw new Error(`Prompt path exists but is not a directory: ${promptPath}`)
   }
-  const promptFilePath = path.join(promptPath, `${descriptionToIdentifier(title)}.txt`)
+
+  const mirrorRepoPath = path.join(REPO_ROOT, `${repoName}.git`)
+  if (!fs.existsSync(mirrorRepoPath)) {
+    console.info('Creating mirror repository at ', mirrorRepoPath)
+    await createRepository(repoName, {})
+  }
+  const promptFilePath = path.join(promptPath, `${repoName}.txt`)
   fs.writeFileSync(promptFilePath, prompt)
   await runCommand('echo', ['saved prompts in', promptFilePath], process.cwd())
   await runCommand('echo', ['running openclaw at', promptPath], process.cwd())
@@ -105,7 +112,7 @@ export async function generateGitRepoFromBlogContent(blogPost: BlogPostLazy): Pr
   await runCommand('echo', openClawCommands, process.cwd())
   await runCommand(openClawCommands[0], openClawCommands.slice(1), process.cwd())
 
-  const repoPath = `${REPO_ROOT}/${descriptionToIdentifier(title)}`
+  const repoPath = `${REPO_ROOT}/${repoName}`
   console.info(`git repo generated for blog post "${title}" at ${repoPath}`)
   // TODO: search through the new git repo, scan for "snippets" directory, and extract code snippets and save to
   const blogPostRepo = AppDataSource.getRepository(BlogPost)
