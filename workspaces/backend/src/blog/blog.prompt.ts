@@ -23,6 +23,15 @@ Generate working git directory with initial codebase based on the blog content p
 - "snippets" directory may be nested with subdirectories matching actual "src" structure
 - MUST generate git directory at ${REPO_ROOT}/{repoName}
 - MUST configure git repository with "main" as default branch, user as "blog-generator", and email as "blog-generator@localhost"
+- if the repository already exists, check the content and improve the content if needed
+- MUST run the following command to publish the generated git repository:
+
+<GIT_COMMAND>
+# in ${REPO_ROOT}/{repoName}
+git add .
+git commit -m "Initial commit"
+git push --mirror ${REPO_ROOT}/{repoName}.git
+</GIT_COMMAND
 
 <BLOG_DESCRIPTION>
 {description}
