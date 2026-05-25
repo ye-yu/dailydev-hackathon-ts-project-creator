@@ -2,7 +2,7 @@ import { spawn } from 'node:child_process'
 import fs from 'node:fs'
 import path from 'node:path'
 import { createBareRepositoryIfNotExist, REPO_ROOT } from '../git/git.server.ts'
-import type { BlogPostLazy } from '@ye-yu/shared/entities'
+import type { BlogFileLazy, BlogPostLazy } from '@ye-yu/shared/entities'
 import { AppDataSource } from '@ye-yu/database/data-source'
 import { BlogPost } from '@ye-yu/database'
 import { PrefixedLogger } from '@ye-yu/shared/logger'
@@ -110,7 +110,29 @@ export async function generateGitRepoFromBlogContent(blogPost: BlogPostLazy): Pr
 
   const repoPath = `${REPO_ROOT}/${repoName}`
   console.info(`git repo generated for blog post "${title}" at ${repoPath}`)
-  // TODO: search through the new git repo, scan for "snippets" directory, and extract code snippets and save to
+  const snippetsDir = path.join(repoPath, 'snippets')
+  const files = Array.from(flatten(snippetsDir)).map(
+    (file) =>
+      ({
+        path: file.path,
+        language: path.extname(file.path).slice(1),
+        content: file.content,
+        postId: blogPost.id,
+        post: blogPost,
+      }) satisfies Omit<BlogFileLazy, 'id'>,
+  )
   const blogPostRepo = AppDataSource.getRepository(BlogPost)
-  await blogPostRepo.update(blogPost.id, { gitUrl: `/git/${repoName}.git`, files: [] })
+  await blogPostRepo.update(blogPost.id, { gitUrl: `/git/${repoName}.git`, files: files })
+}
+
+function* flatten(directory: string): Generator<{ path: string; content: string }> {
+  const readdirs = fs.readdirSync(directory, { withFileTypes: true })
+  for (const dirent of readdirs) {
+    const fullPath = path.join(directory, dirent.name)
+    if (dirent.isDirectory()) {
+      yield* flatten(fullPath)
+    } else if (dirent.isFile()) {
+      yield { path: fullPath, content: fs.readFileSync(fullPath, 'utf-8') }
+    }
+  }
 }
