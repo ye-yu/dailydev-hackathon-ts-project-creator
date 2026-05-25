@@ -8,6 +8,7 @@
     "build:database": "pnpm --filter @ye-yu/database build",
     "build:shared": "pnpm --filter @ye-yu/shared build",
     "build:frontend": "pnpm --filter @ye-yu/frontend build",
+    "build:s": "pnpm build:database && pnpm build:shared && pnpm build:backend && pnpm build:frontend",
     "build": "pnpm build:database && pnpm build:shared && run-p build:backend build:frontend",
     "start:backend": "pnpm --filter @ye-yu/backend start",
     "start:frontend": "pnpm --filter @ye-yu/frontend dev",
