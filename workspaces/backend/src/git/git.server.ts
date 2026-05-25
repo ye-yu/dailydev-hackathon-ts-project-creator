@@ -116,6 +116,7 @@ repos.on('push', (push) => {
 
 repos.on('info', (info) => {
   const repoName = repoNameFromUrl(info.repo)
+  console.info('Fetching info for repo:', repoName)
   materializeRepo(repoName).then(
     (ok) => {
       if (ok) info.accept()
@@ -128,7 +129,10 @@ repos.on('info', (info) => {
   )
 })
 
-repos.on('head', (head) => head.accept())
+repos.on('head', (head) => {
+  console.info(`Checking head for repo: ${head.repo}`)
+  head.accept()
+})
 
 repos.on('fetch', (fetch) => {
   console.info(`Fetch ${fetch.repo} @ ${fetch.commit}`)
