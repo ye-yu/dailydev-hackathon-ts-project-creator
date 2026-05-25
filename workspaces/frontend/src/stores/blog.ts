@@ -78,10 +78,12 @@ export const useBlogStore = defineStore('blog', () => {
     try {
       const response = await fetch(toApiUrl('/api/blog-posts'))
       const payload = await readJsonResponse<GetBlogPostsResponse>(response)
-      posts.value = payload.posts.map((post) => ({
-        ...post,
-        files: post.files ?? [],
-      })).filter(e => e.title)
+      posts.value = payload.posts
+        .map((post) => ({
+          ...post,
+          files: post.files ?? [],
+        }))
+        .filter((e) => e.title)
 
       if (activePostId.value && !posts.value.find((post) => post.id === activePostId.value)) {
         activePostId.value = null

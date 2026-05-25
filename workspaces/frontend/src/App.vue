@@ -273,6 +273,8 @@ button {
 .viewer > .empty {
   flex: 1;
   display: flex;
+  flex-direction: column;
+  font-weight: bold;
   align-items: center;
   justify-content: center;
   color: var(--muted-foreground);

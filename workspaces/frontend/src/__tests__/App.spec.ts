@@ -15,6 +15,8 @@ describe('App', () => {
 
   it('shows the empty viewer message when no post is selected', () => {
     const wrapper = mount(App)
-    expect(wrapper.text()).toContain('Select a blog post to view details')
+    expect(wrapper.text()).toContain(
+      'Hi, I am Raflie. This is my submission for DailyDev Hackathon under Content -> Action.',
+    )
   })
 })
