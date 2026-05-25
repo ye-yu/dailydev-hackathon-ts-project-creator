@@ -13,12 +13,19 @@ const emit = defineEmits<{
   (e: 'download'): void
   (e: 'generate-files'): void
 }>()
+
+const gitUrl = computed(() => {
+  const origin = new URL(window.location).origin
+  const pathName = post.gitUrl
+  const fullUrl = new URL(pathName, origin).href
+  return fullUrl
+})
 </script>
 
 <template>
   <div class="tab-panel code">
     <div v-if="hasFiles" class="git-row">
-      <input class="git-url" readonly :value="post.gitUrl" aria-label="Git URL" />
+      <input class="git-url" readonly :value="gitUrl" aria-label="Git URL" />
       <button class="git-btn" @click="emit('clone')">Clone</button>
       <button class="git-btn" @click="emit('download')">Download</button>
     </div>
