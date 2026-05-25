@@ -4,7 +4,7 @@ import path from 'node:path'
 import { createBareRepositoryIfNotExist, REPO_ROOT } from '../git/git.server.ts'
 import type { BlogFileLazy, BlogPostLazy } from '@ye-yu/shared/entities'
 import { AppDataSource } from '@ye-yu/database/data-source'
-import { BlogPost } from '@ye-yu/database'
+import { BlogPost, BlogFile } from '@ye-yu/database'
 import { PrefixedLogger } from '@ye-yu/shared/logger'
 
 const console = new PrefixedLogger(import.meta.url)
@@ -122,7 +122,11 @@ export async function generateGitRepoFromBlogContent(blogPost: BlogPostLazy): Pr
       }) satisfies Omit<BlogFileLazy, 'id'>,
   )
   const blogPostRepo = AppDataSource.getRepository(BlogPost)
-  await blogPostRepo.update(blogPost.id, { gitUrl: `/git/${repoName}.git`, files: files })
+  await blogPostRepo.update(blogPost.id, { gitUrl: `/git/${repoName}.git` })
+
+  const blogFileRepo = AppDataSource.getRepository(BlogFile)
+  const filesEntity = blogFileRepo.create(files)
+  await blogFileRepo.save(filesEntity)
 }
 
 function* flatten(directory: string): Generator<{ path: string; content: string }> {

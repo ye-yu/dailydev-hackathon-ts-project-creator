@@ -10,6 +10,7 @@ const blog = useBlogStore()
 const isActive = computed(() => blog.activePostId === props.post.id)
 const activeTab = computed(() => (isActive.value ? blog.activeTab : null))
 const descriptionHtml = computed(() => renderMarkdownInline(props.post.description))
+const hasFiles = computed(() => (props.post.files?.length ?? 0) > 0)
 
 const formattedDate = computed(() =>
   new Date(props.post.timestamp).toLocaleDateString(undefined, {
@@ -43,6 +44,7 @@ function open(tab: ViewerTab) {
         View Blog
       </button>
       <button
+        v-if="hasFiles"
         class="secondary-btn"
         :class="{ highlight: activeTab === 'code' }"
         @click="open('code')"

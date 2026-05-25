@@ -36,14 +36,21 @@ export const useBlogStore = defineStore('blog', () => {
 
   const filteredPosts = computed(() => {
     const q = search.value.trim().toLowerCase()
-    if (!q) return posts.value
-    return posts.value.filter(
-      (p) =>
-        p.title.toLowerCase().includes(q) ||
-        p.author.toLowerCase().includes(q) ||
-        p.description.toLowerCase().includes(q) ||
-        p.tags.some((t) => t.toLowerCase().includes(q)),
-    )
+    const matched = q
+      ? posts.value.filter(
+          (p) =>
+            p.title.toLowerCase().includes(q) ||
+            p.author.toLowerCase().includes(q) ||
+            p.description.toLowerCase().includes(q) ||
+            p.tags.some((t) => t.toLowerCase().includes(q)),
+        )
+      : posts.value
+
+    return matched.slice().sort((a, b) => {
+      const aHasFiles = (a.files?.length ?? 0) > 0 ? 0 : 1
+      const bHasFiles = (b.files?.length ?? 0) > 0 ? 0 : 1
+      return aHasFiles - bHasFiles
+    })
   })
 
   const activePost = computed(() => posts.value.find((p) => p.id === activePostId.value) ?? null)
