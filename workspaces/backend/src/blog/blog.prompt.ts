@@ -3,6 +3,9 @@ import { REPO_ROOT } from '../git/git.server.ts'
 import type { BlogPostLazy } from '@ye-yu/shared/entities'
 import { AppDataSource } from '@ye-yu/database/data-source'
 import { BlogPost } from '@ye-yu/database'
+import { PrefixedLogger } from '@ye-yu/shared/logger'
+
+const console = new PrefixedLogger(import.meta.url)
 
 export const BLOG_PROMPT = `
 // TODO: improve prompt
@@ -16,8 +19,12 @@ Generate working git directory with initial codebase based on the blog content p
 - MUST include "src" directory with source code files if appropriate for the blog content
 - MUST include "snippets" directory to show sample code snippets, it may not need to be runnable code
 - "snippets" directory may be nested with subdirectories matching actual "src" structure
-- MUST generate git directory at ${REPO_ROOT}
+- MUST generate git directory at ${REPO_ROOT}/{repoName}
 - MUST configure git repository with "main" as default branch, user as "blog-generator", and email as "blog-generator@localhost"
+
+<BLOG_DESCRIPTION>
+{description}
+</BLOG_DESCRIPTION>
 
 <BLOG_CONTENT>
 {content}
@@ -43,12 +50,30 @@ async function runCommand(executable: string, args: string[], cwd?: string): Pro
   )
 }
 
-export async function generateGitRepoFromBlogContent(
-  content: string,
-  blogPost: BlogPostLazy,
-): Promise<void> {
-  const prompt = BLOG_PROMPT.replace('{content}', content)
+function descriptionToIdentifier(description: string, method = ''): string {
+  const prefix = description
+    .toLocaleLowerCase('en-us')
+    .startsWith(method.toLocaleLowerCase('en-us'))
+    ? ''
+    : method.charAt(0).toUpperCase() + method.slice(1)
+  return (
+    prefix +
+    description
+      .split(/[^\w]+/g)
+      .slice(0, 10)
+      .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+      .join('')
+  )
+}
+
+export async function generateGitRepoFromBlogContent(blogPost: BlogPostLazy): Promise<void> {
+  const { title, description, content } = blogPost
+  const prompt = BLOG_PROMPT.replace('{description}', description)
+    .replace('{content}', content)
+    .replace('{repoName}', descriptionToIdentifier(title))
   await runCommand('echo', ['testing prompt', prompt], process.cwd())
+  const repoPath = `${REPO_ROOT}/${descriptionToIdentifier(title)}`
+  console.info(`git repo generated for blog post "${title}" at ${repoPath}`)
   // TODO: search through the new git repo, scan for "snippets" directory, and extract code snippets and save to
   const blogPostRepo = AppDataSource.getRepository(BlogPost)
   await blogPostRepo.update(blogPost.id, { gitUrl: '', files: [] })

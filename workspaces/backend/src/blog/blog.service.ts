@@ -109,7 +109,7 @@ export async function generateBlogFiles(postId: string): Promise<void> {
   if (!post) {
     throw new Error('Not found')
   }
-  await generateGitRepoFromBlogContent(post.content, post)
+  await generateGitRepoFromBlogContent(post)
 }
 
 export async function loadBlogContent(postId: string): Promise<BlogPost | null> {
