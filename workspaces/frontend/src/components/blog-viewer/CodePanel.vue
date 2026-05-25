@@ -1,8 +1,9 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import type { BlogPostLazy } from '@ye-yu/shared/entities'
 import FileAccordion from './FileAccordion.vue'
 
-defineProps<{
+const props = defineProps<{
   post: BlogPostLazy
   hasFiles: boolean
   isGeneratingFiles: boolean
@@ -15,8 +16,8 @@ const emit = defineEmits<{
 }>()
 
 const gitUrl = computed(() => {
-  const origin = new URL(window.location).origin
-  const pathName = post.gitUrl
+  const origin = new URL(`${window.location}`).origin
+  const pathName = props.post.gitUrl
   const fullUrl = new URL(pathName, origin).href
   return fullUrl
 })
