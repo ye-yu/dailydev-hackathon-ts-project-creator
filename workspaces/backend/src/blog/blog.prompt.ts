@@ -1,7 +1,7 @@
 import { spawn } from 'node:child_process'
 import fs from 'node:fs'
 import path from 'node:path'
-import { createRepository, REPO_ROOT } from '../git/git.server.ts'
+import { createBareRepositoryIfNotExist, REPO_ROOT } from '../git/git.server.ts'
 import type { BlogPostLazy } from '@ye-yu/shared/entities'
 import { AppDataSource } from '@ye-yu/database/data-source'
 import { BlogPost } from '@ye-yu/database'
@@ -92,11 +92,7 @@ export async function generateGitRepoFromBlogContent(blogPost: BlogPostLazy): Pr
     throw new Error(`Prompt path exists but is not a directory: ${promptPath}`)
   }
 
-  const mirrorRepoPath = path.join(REPO_ROOT, `${repoName}.git`)
-  if (!fs.existsSync(mirrorRepoPath)) {
-    console.info('Creating mirror repository at ', mirrorRepoPath)
-    await createRepository(repoName, {})
-  }
+  await createBareRepositoryIfNotExist(repoName)
   const promptFilePath = path.join(promptPath, `${repoName}.txt`)
   fs.writeFileSync(promptFilePath, prompt)
   await runCommand('echo', ['saved prompts in', promptFilePath], process.cwd())

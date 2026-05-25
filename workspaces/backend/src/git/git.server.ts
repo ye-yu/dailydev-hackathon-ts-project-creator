@@ -135,6 +135,12 @@ repos.on('fetch', (fetch) => {
   fetch.accept()
 })
 
+export async function createBareRepositoryIfNotExist(repoNameWithoutDotGit: string) {
+  await new Promise<void>((resolve, reject) => {
+    repos.create(repoNameWithoutDotGit, (err) => (err ? reject(err) : resolve()))
+  })
+}
+
 /**
  * @param repoName must be a valid directory name. e.g. `my-blog-post`
  * @param files a record of file paths to their contents
