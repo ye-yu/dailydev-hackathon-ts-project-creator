@@ -81,7 +81,7 @@ export const useBlogStore = defineStore('blog', () => {
       posts.value = payload.posts.map((post) => ({
         ...post,
         files: post.files ?? [],
-      }))
+      })).filter(e => e.title)
 
       if (activePostId.value && !posts.value.find((post) => post.id === activePostId.value)) {
         activePostId.value = null
